@@ -5,7 +5,7 @@ import Header from './index'
 
 export default {
     component: Header,
-    title: "Design System|Header",
+    title: "Design System/Header",
 }
 
 export const Default = () => <Header />

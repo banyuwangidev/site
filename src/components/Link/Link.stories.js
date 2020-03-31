@@ -3,7 +3,7 @@ import Link from './index'
 
 export default {
     component: Link,
-    title: "Design System|Link",
+    title: "Design System/Link",
 }
 
 export const Default = () => <Link to="/"><p>BRO</p></Link>
