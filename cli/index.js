@@ -43,10 +43,6 @@ const createPost = async (title, username) => {
     .toLowerCase()}`
 
   await fs.ensureDir(`contents/posts/${transformTitle}/images`)
-  await fs.copy(
-    "cli/default.jpg",
-    `contents/posts/${transformTitle}/images/default.jpg`
-  )
   await fs.writeFile(
     `contents/posts/${transformTitle}/index.mdx`,
     blueprintPost(title, username, date)

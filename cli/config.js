@@ -25,7 +25,7 @@ const blueprintPost = (title, username, date) => {
   return `---
 title: "${capitalize}"
 author: "${username}"
-image: "images/default.jpg"
+image: ""
 date: ${date}
 tags:
   - "new year"
