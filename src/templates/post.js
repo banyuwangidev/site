@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 import styled from "styled-components"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import LinkExternal from "@components/linkExternal"
+import LinkExternal from "../components/LinkExternal"
 
 const PostContent = styled.article``
 

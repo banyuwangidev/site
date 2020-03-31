@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import PostItem from "@components/postItem"
+import PostItem from "../components/PostItem"
 
 export const query = graphql`
   query($tag: String!) {

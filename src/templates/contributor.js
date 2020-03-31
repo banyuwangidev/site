@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
-import PostItem from "@components/postItem"
-import LinkExternal from "@components/linkExternal"
+import PostItem from "../components/PostItem"
+import LinkExternal from "../components/LinkExternal"
 
 export const query = graphql`
   query($contributor: String!) {

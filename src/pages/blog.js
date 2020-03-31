@@ -1,8 +1,8 @@
 
 import React from "react"
 
-import SEO from "@components/seo"
-import PostItem from "@components/postItem"
+import SEO from "../components/seo"
+import PostItem from "../components/PostItem"
 
 import usePosts from "../utils/usePosts"
 
