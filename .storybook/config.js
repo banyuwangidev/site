@@ -1,7 +1,18 @@
-import React from 'react'
+import * as React from 'react'
+import { withInfo } from "@storybook/addon-info";
 import { configure, addDecorator } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
 import { GlobalStyle } from '../src/shared/global'
+
+
+// global style
+addDecorator(withInfo());
+addDecorator(story => (
+    <>
+        <GlobalStyle />
+        {story()}
+    </>
+))
 
 // automatically import all files ending in *.stories.js
 configure(require.context("../src", true, /\.stories\.js$/), module)
@@ -17,10 +28,3 @@ global.__PATH_PREFIX__ = ""
 window.___navigate = pathname => {
   action("NavigateTo:")(pathname)
 }
-
-addDecorator(story => (
-    <>
-        <GlobalStyle />
-        {story()}
-    </>
-))
