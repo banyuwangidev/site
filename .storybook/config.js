@@ -1,5 +1,8 @@
-import { configure } from "@storybook/react"
+import React from 'react'
+import { configure, addDecorator } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
+import { GlobalStyle } from '../src/shared/global'
+
 // automatically import all files ending in *.stories.js
 configure(require.context("../src", true, /\.stories\.js$/), module)
 // Gatsby's Link overrides:
@@ -14,3 +17,10 @@ global.__PATH_PREFIX__ = ""
 window.___navigate = pathname => {
   action("NavigateTo:")(pathname)
 }
+
+addDecorator(story => (
+    <>
+        <GlobalStyle />
+        {story()}
+    </>
+))
