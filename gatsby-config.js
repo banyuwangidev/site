@@ -9,6 +9,12 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-mdx`,
     {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/layout`),
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `posts`,
