@@ -72,7 +72,9 @@ const PostTemplate = ({ data: { mdx: post } }) => {
       <p>{date}</p>
       <div>
         {tags.map(tag => (
-          <div key={tag}>{tag}</div>
+          <div key={tag}>
+            <Link to={`/tags/${tag}`}>{tag}</Link>
+          </div>
         ))}
       </div>
       <PostContent>
