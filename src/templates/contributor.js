@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
-// import PostItem from "@components/postItem"
-// import LinkExternal from "@components/linkExternal"
+import PostItem from "@components/postItem"
+import LinkExternal from "@components/linkExternal"
 
 export const query = graphql`
   query($contributor: String!) {
@@ -52,33 +52,17 @@ const ContributorTemplate = ({
   
   return (
     <div>
-      Contributor
+      <h1>Contributor</h1>
+      <img src={avatar} alt={context.contributor} />
+      <h1>{contributor.name}</h1>
+      <p>{contributor.bio}</p>
+      <LinkExternal link={github} text={contributor.github} />
+      <div>
+        {filteredPost.map(({ frontmatter: post, excerpt, fields: { slug }}) => (
+          <PostItem key={slug} post={{...post, excerpt, slug, contributors }}/>
+        ))}
+      </div>
     </div>
-    // <ContibutorWrapper>
-    //   <AuthorWrapper>
-    //     <AuthorContainer>
-    //       <RoundedImage src={avatar} alt={context.contributor} />
-    //       <h1> {contributor.name} </h1>
-    //       <p> {contributor.bio} </p>
-    //       <LinkExternal link={github} text={contributor.github} />
-    //     </AuthorContainer>
-    //   </AuthorWrapper>
-    //   <PostsWrapper>
-    //     {filteredPost.map(
-    //       ({ frontmatter: post, excerpt, fields: { slug } }) => (
-    //         <PostItem
-    //           key={slug}
-    //           post={{
-    //             ...post,
-    //             excerpt,
-    //             slug,
-    //             contributors,
-    //           }}
-    //         />
-    //       )
-    //     )}
-    //   </PostsWrapper>
-    // </ContibutorWrapper>
   )
 }
 
