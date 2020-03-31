@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Image from "gatsby-image"
-import styled from "@emotion/styled"
+import styled from "styled-components"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import LinkExternal from "@components/linkExternal"
 
