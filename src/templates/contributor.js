@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import PostItem from "../components/PostItem"
-import LinkExternal from "../components/LinkExternal"
+import Link from "../components/Link"
 
 export const query = graphql`
   query($contributor: String!) {
@@ -56,7 +56,7 @@ const ContributorTemplate = ({
       <img src={avatar} alt={context.contributor} />
       <h1>{contributor.name}</h1>
       <p>{contributor.bio}</p>
-      <LinkExternal link={github} text={contributor.github} />
+      <Link to={github} external>{contributor.github}</Link>
       <div>
         {filteredPost.map(({ frontmatter: post, excerpt, fields: { slug }}) => (
           <PostItem key={slug} post={{...post, excerpt, slug, contributors }}/>

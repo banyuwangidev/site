@@ -1,9 +1,9 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Image from "gatsby-image"
 import styled from "styled-components"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import LinkExternal from "../components/LinkExternal"
+import Link from "../components/Link"
 
 const PostContent = styled.article``
 
@@ -44,7 +44,7 @@ const AuthorPost = ({ author, contributors }) => {
     <div>
       <h4>{data.name}</h4>
       <Link to={`/contributors/${data.github}`}>{data.github}</Link>
-      <LinkExternal link={data.site} text={data.site} />
+      <Link to={data.site} external>{data.site}</Link>
       <img src={avatar} alt={data.github} />
       <p>{data.bio}</p>
     </div>
