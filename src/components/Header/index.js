@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types';
-import { Router, Location } from "@reach/router"
 
+import useCrumb from '../../utils/useCrumb'
 import Link from '../Link'
 
 const Nav = styled.nav`
@@ -39,6 +39,9 @@ const LinkHolder = styled.div`
 `
 
 const Header = ({ title }) => {
+    const path = useCrumb();
+    console.log(path)
+
     return (
         <Nav>
             <NavItemLeft>

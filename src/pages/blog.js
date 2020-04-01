@@ -1,13 +1,18 @@
 
-import React from "react"
+import * as React from "react"
 
+import { StoreCtx } from '../shared/context'
 import SEO from "../components/seo"
 import PostItem from "../components/PostItem"
-
 import usePosts from "../utils/usePosts"
 
 const Blog = () => {
   const posts = usePosts()
+  const { setCrumbPage } = React.useContext(StoreCtx)
+
+  React.useEffect(() => {
+    setCrumbPage(() => "Blog");
+  },[setCrumbPage]);
 
   return (
     <>
