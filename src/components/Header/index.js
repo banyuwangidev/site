@@ -54,22 +54,40 @@ const SeperateLine = styled.div`
     vertical-align: middle;
 `
 
-const Header = ({ title, crumbs }) => {
+const SpanText = styled.span`
+    line-height: 24px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #111;
+    line-height: 32px;
+    padding: 0 8px;
+`
 
+const Header = ({ title, crumbs }) => {
+    const crumbsLen = crumbs.length === undefined ? 0 : crumbs.length;
+    
     return (
         <Nav>
             <NavItemLeft>
                 <LinkHolder>
                     <Link to="/" decoration="none">{title}</Link>
                 </LinkHolder>
-                {crumbs !== 0 ? crumbs.map(path => (
+                {
+                    crumbsLen !== 0 ? crumbs.map((path, i) => {
+                        return (crumbsLen === i + 1) ? (
+                            <React.Fragment key={path}>
+                                <SeperateLine>/</SeperateLine>
+                                <SpanText>{path}</SpanText>
+                            </React.Fragment>
+                            ): (
                     <React.Fragment key={path}>
                         <SeperateLine>/</SeperateLine>
                         <LinkHolder>
                             <Link to={`/${path}`} decoration="none">{path}</Link>
                         </LinkHolder>
                     </React.Fragment>
-                )): null}
+                    )}) : null
+                }
             </NavItemLeft>
             <NavItemRight>
                 <LinkHolder>
