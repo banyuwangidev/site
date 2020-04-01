@@ -8,4 +8,8 @@ export default {
     title: "Design System/Header",
 }
 
-export const Default = () => <Header />
+const headerData = {
+    title: "Banyuwangi DEV"
+}
+
+export const Default = () => <Header {...headerData} />
