@@ -63,13 +63,13 @@ const Header = ({ title, crumbs }) => {
                     <Link to="/" decoration="none">{title}</Link>
                 </LinkHolder>
                 {crumbs !== 0 ? crumbs.map(path => (
-                    <>
+                    <React.Fragment key={path}>
                         <SeperateLine>/</SeperateLine>
                         <LinkHolder>
-                            <Link to="/" decoration="none">{path}</Link>
+                            <Link to={`/${path}`} decoration="none">{path}</Link>
                         </LinkHolder>
-                    </>
-                )): null}          
+                    </React.Fragment>
+                )): null}
             </NavItemLeft>
             <NavItemRight>
                 <LinkHolder>

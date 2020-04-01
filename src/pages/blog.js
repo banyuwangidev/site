@@ -11,7 +11,7 @@ const Blog = () => {
   const { setCrumbPage } = React.useContext(StoreCtx)
 
   React.useEffect(() => {
-    setCrumbPage(() => "Blog");
+    setCrumbPage(() => ["blog"]);
   },[setCrumbPage]);
 
   return (

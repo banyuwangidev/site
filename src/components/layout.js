@@ -12,9 +12,10 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from './Header'
 import Footer from "./footer"
 import { GlobalStyle } from "../shared/global"
+import useCrumb from '../utils/useCrumb'
 
 const Layout = ({ children }) => {
-  
+  const path = useCrumb();
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -28,7 +29,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
-      <Header title={data.site.siteMetadata.title} />
+      <Header title={data.site.siteMetadata.title} crumbs={path} />
       <div
         style={{
           display: `flex`,
