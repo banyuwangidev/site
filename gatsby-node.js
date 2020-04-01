@@ -12,6 +12,15 @@ const postTemplate = require.resolve("./src/templates/post.js")
 const tagTemplate = require.resolve("./src/templates/tag.js")
 const ContributorTemplate = require.resolve("./src/templates/contributor.js")
 
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage } = actions
+
+  if (page.path === "/") {
+    page.context.layout = "full"
+    createPage(page)
+  }
+}
+
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === `Mdx`) {
