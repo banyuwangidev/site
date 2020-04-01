@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types';
 
+import Logo from '../../assets/images/logo-32.png'
 import Link from '../Link'
 
 const Nav = styled.nav`
@@ -33,9 +34,11 @@ const NavItemRight = styled.div`
 const LinkHolder = styled.div`
     border-radius: 6px;
     line-height: 32px;
+    padding: 4px 0;
     transition: background-color .2s ease;
     a {
-        display: inline-block;
+        display: flex;
+        align-items: center;
         line-height: 32px;
         padding: 0 8px;
     }
@@ -70,7 +73,10 @@ const Header = ({ title, crumbs }) => {
         <Nav>
             <NavItemLeft>
                 <LinkHolder>
-                    <Link to="/" decoration="none">{title}</Link>
+                    <Link to="/" decoration="none">
+                        <img style={{marginRight: 8 }} src={Logo} alt="logo" />
+                        <strong>{title}</strong>
+                    </Link>
                 </LinkHolder>
                 {
                     crumbsLen !== 0 ? crumbs.map((path, i) => {
