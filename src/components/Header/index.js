@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types';
 
-import useCrumb from '../../utils/useCrumb'
 import Link from '../Link'
 
 const Nav = styled.nav`
@@ -20,13 +19,20 @@ const Nav = styled.nav`
     z-index: 1;
 `
 
-const NavItemLeft = styled.div``
-const NavItemRight = styled.div`padding: 4px 0;`
+const NavItemLeft = styled.div`
+    display: flex;
+    align-items: center;
+`
+
+const NavItemRight = styled.div`
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+`
+
 const LinkHolder = styled.div`
     border-radius: 6px;
-    display: inline-block;
     line-height: 32px;
-    padding-left: 8px;
     transition: background-color .2s ease;
     a {
         display: inline-block;
@@ -37,17 +43,33 @@ const LinkHolder = styled.div`
         background-color: #f3f3f3;
     }
 `
+const SeperateLine = styled.div`
+    color: #999;
+    display: inline-block;
+    font-family: "Inter", Arial, Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 32px;
+    margin: 0 2px;
+    vertical-align: middle;
+`
 
-const Header = ({ title }) => {
-    const path = useCrumb();
-    console.log(path)
+const Header = ({ title, crumbs }) => {
 
     return (
         <Nav>
             <NavItemLeft>
                 <LinkHolder>
                     <Link to="/" decoration="none">{title}</Link>
-                </LinkHolder>                
+                </LinkHolder>
+                {crumbs !== 0 ? crumbs.map(path => (
+                    <>
+                        <SeperateLine>/</SeperateLine>
+                        <LinkHolder>
+                            <Link to="/" decoration="none">{path}</Link>
+                        </LinkHolder>
+                    </>
+                )): null}          
             </NavItemLeft>
             <NavItemRight>
                 <LinkHolder>
@@ -62,7 +84,8 @@ const Header = ({ title }) => {
 }
 
 Header.propTypes = {
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    crumbs: PropTypes.any
 }
 
 export default Header

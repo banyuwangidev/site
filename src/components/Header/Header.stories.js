@@ -9,7 +9,14 @@ export default {
 }
 
 const headerData = {
-    title: "Banyuwangi DEV"
+    title: "Banyuwangi DEV",
+    crumbs: []
+}
+
+const headerBreadCrumb = {
+    title: "Banyuwangi DEV",
+    crumbs: ["contributor","Fahmi Irsyad Khairi"]
 }
 
 export const Default = () => <Header {...headerData} />
+export const BreadCrumb = () => <Header {...headerBreadCrumb} />
