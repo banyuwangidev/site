@@ -132,10 +132,10 @@ const Header = ({ title, crumbs }) => {
             <FlexSeperate />
             <NavItemRight>
                 <LinkHolder>
-                    <Link to="/blog/" decoration="none">Blog</Link>
+                    <Link to="/blog" decoration="none">Blog</Link>
                 </LinkHolder>
                 <LinkHolder>
-                    <Link to="/about/" decoration="none">Blog</Link>
+                    <Link to="/about" decoration="none">Blog</Link>
                 </LinkHolder>
             </NavItemRight>
         </Nav>
