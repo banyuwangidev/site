@@ -54,7 +54,7 @@ const LinkHolder = styled.div`
   a {
     display: flex;
     align-items: center;
-    padding: 0 8px;
+    padding: 0 4px;
   }
   &:hover {
     background-color: #f3f3f3;
@@ -77,7 +77,7 @@ const SpanText = styled.span`
   text-decoration: none;
   color: #111;
   line-height: 32px;
-  padding: 0 8px;
+  padding: 0 4px;
 `
 
 const TextOverflow = styled.div`
