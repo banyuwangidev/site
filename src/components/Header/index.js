@@ -122,41 +122,37 @@ const Header = ({ title, crumbs }) => {
                     <Link to={`/${path}`} decoration="none">
                       <TextOverflow size="160px">{path}</TextOverflow>
                     </Link>
-                </LinkHolder>
-                {
-                    crumbsLen !== 0 ? crumbs.map((path, i) => {
-                        return (crumbsLen === i + 1) ? (
-                            <React.Fragment key={path}>
-                                <SeperateLine>/</SeperateLine>
-                                <TextOverflow size="240px">
-                                    <SpanText>{path}</SpanText>
-                                </TextOverflow>
-                            </React.Fragment>
-                            ): (
-                    <React.Fragment key={path}>
-                        <SeperateLine>/</SeperateLine>
-                        <LinkHolder>
-                            <Link to={`/${path}`} decoration="none">
-                                <TextOverflow size="160px">
-                                    {path}
-                                </TextOverflow>
-                            </Link>
-                        </LinkHolder>
-                    </React.Fragment>
-                    )}) : null
-                }
-            </NavItemLeft>
-            <FlexSeperate />
-            <NavItemRight>
-                <LinkHolder>
-                    <Link to="/blog" decoration="none">Blog</Link>
-                </LinkHolder>
-                <LinkHolder>
-                    <Link to="/about" decoration="none">Blog</Link>
-                </LinkHolder>
-            </NavItemRight>
-        </Nav>
-    )
+                  </LinkHolder>
+                </React.Fragment>
+              )
+            })
+          : null}
+      </NavItemLeft>
+      <FlexSeperate />
+      <NavItemRight>
+        <LinkHolder>
+          <Link to="/blog" decoration="none">
+            Blog
+          </Link>
+        </LinkHolder>
+        <LinkHolder>
+          <Link to="/events" decoration="none">
+            Events
+          </Link>
+        </LinkHolder>
+        <LinkHolder>
+          <Link to="/about" decoration="none">
+            About
+          </Link>
+        </LinkHolder>
+        <LinkHolder>
+          <Link to="/contributors" decoration="none">
+            Contributors
+          </Link>
+        </LinkHolder>
+      </NavItemRight>
+    </Nav>
+  )
 }
 
 Header.propTypes = {
