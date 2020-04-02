@@ -92,7 +92,7 @@ const FlexSeperate = styled.div`
   flex-shrink: 1;
 `
 
-const Header = ({ title, crumbs }) => {
+const Header = ({ title, crumbs, menus }) => {
   const crumbsLen = crumbs.length === undefined ? 0 : crumbs.length
 
   return (
@@ -130,26 +130,15 @@ const Header = ({ title, crumbs }) => {
       </NavItemLeft>
       <FlexSeperate />
       <NavItemRight>
-        <LinkHolder>
-          <Link to="/blog" decoration="none">
-            Blog
-          </Link>
-        </LinkHolder>
-        <LinkHolder>
-          <Link to="/events" decoration="none">
-            Events
-          </Link>
-        </LinkHolder>
-        <LinkHolder>
-          <Link to="/about" decoration="none">
-            About
-          </Link>
-        </LinkHolder>
-        <LinkHolder>
-          <Link to="/contributors" decoration="none">
-            Contributors
-          </Link>
-        </LinkHolder>
+        {
+          menus.map(menu => (
+            <LinkHolder key={menu.title}>
+              <Link to={`/${menu.path}`} decoration="none">
+                {menu.title}
+              </Link>
+            </LinkHolder>
+          ))
+        }
       </NavItemRight>
     </Nav>
   )
