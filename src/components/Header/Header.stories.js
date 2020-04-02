@@ -2,6 +2,7 @@ import React from 'react'
 import { action } from "@storybook/addon-actions"
 
 import Header from './index'
+import headerMenu from '../../shared/headerMenu'
 
 export default {
     component: Header,
@@ -10,12 +11,14 @@ export default {
 
 const headerData = {
     title: "Banyuwangi DEV",
-    crumbs: []
+    crumbs: [],
+    menus: headerMenu
 }
 
 const headerBreadCrumb = {
     title: "Banyuwangi DEV",
-    crumbs: ["contributor","Fahmi Irsyad Khairi"]
+    crumbs: ["contributor","Fahmi Irsyad Khairi"],
+    menus: headerMenu
 }
 
 export const Default = () => <Header {...headerData} />

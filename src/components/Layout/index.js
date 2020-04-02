@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Full from './Full'
 import Regular from './Regular'
 import Header from '../Header'
+import headerMenu from '../../shared/headerMenu'
 import { GlobalStyle } from "../../shared/global"
 import useCrumb from '../../utils/useCrumb'
 
@@ -23,7 +24,7 @@ const Layout = ({ children, pageContext }) => {
   return (
     <>
       <GlobalStyle />
-      <Header title={data.site.siteMetadata.title} crumbs={path} />
+      <Header title={data.site.siteMetadata.title} crumbs={path} menus={headerMenu} />
         {
             pageContext.layout === "full" ? <Full>{children}</Full> : <Regular>{children}</Regular>
         }
