@@ -17,7 +17,7 @@ export default () => {
 
   return (
     <>
-      {data.map(tag => (
+      {data.map((tag) => (
         <div key={tag.fieldValue}>
           <Link to={`/tags/${tag.fieldValue}`}> {tag.fieldValue}</Link>
           <span>{tag.totalCount}</span>

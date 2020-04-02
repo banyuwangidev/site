@@ -1,9 +1,9 @@
-import * as React from 'react'
+import * as React from "react"
 
-import Footer from '../footer'
+import Footer from "../footer"
 
 const Full = ({ children }) => (
-    <div
+  <div
     style={{
       display: `flex`,
       flexDirection: `column`,
@@ -19,7 +19,7 @@ const Full = ({ children }) => (
       {children}
     </main>
     <Footer />
-    </div>
+  </div>
 )
 
 export default Full
