@@ -23,16 +23,16 @@ const Contributors = () => {
     }
   `)
 
-  const getName = username => {
+  const getName = (username) => {
     let res = nodes
       .map(({ fields }) => fields.contributors)[0]
-      .find(x => x.github === username)
+      .find((x) => x.github === username)
     return res
   }
 
   return (
     <>
-      {data.map(contributor => {
+      {data.map((contributor) => {
         return (
           <div key={contributor.fieldValue}>
             <Link to={`/contributors/${contributor.fieldValue}`}>
