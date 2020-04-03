@@ -17,12 +17,15 @@ export default () => {
 
   return (
     <>
-      {data.map((tag) => (
-        <div key={tag.fieldValue}>
-          <Link to={`/tags/${tag.fieldValue}`}> {tag.fieldValue}</Link>
-          <span>{tag.totalCount}</span>
-        </div>
-      ))}
+      {data.map(({ fieldValue, totalCount: count }) => {
+        const tag = fieldValue.split("-").join(" ");
+        return (
+          <div key={tag}>
+            <Link to={`/tags/${tag}`}> {tag}</Link>
+            <span>{count}</span>
+          </div>
+        )
+      })}
     </>
   )
 }

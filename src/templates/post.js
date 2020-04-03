@@ -75,11 +75,14 @@ const PostTemplate = ({ data: { mdx: post } }) => {
       <AuthorPost author={author} contributors={post.fields.contributors} />
       <p>{date}</p>
       <div>
-        {tags.map((tag) => (
-          <div key={tag}>
-            <Link to={`/tags/${tag}`}>{tag}</Link>
-          </div>
-        ))}
+        {tags.map((tag) => {
+          const t = tag.split("-").join(" ");
+          return (
+            <div key={t}>
+              <Link to={`/tags/${tag}`}>{t}</Link>
+            </div>
+          )
+        })}
       </div>
       <PostContent>
         <MDXRenderer>{post.body}</MDXRenderer>
