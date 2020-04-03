@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { StoreCtx } from '../shared/context'
 
-const Event = () => {
+const About = () => {
     const { setCrumbPage } = React.useContext(StoreCtx)
     
     React.useEffect(() => {
-        setCrumbPage(["event"])
+        setCrumbPage(["about"])
     },[setCrumbPage])
 
-    return <h1>EVENT PAGE</h1>
+    return <h1>About PAGE</h1>
 }
 
-export default Event;
+export default About;
