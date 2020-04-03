@@ -6,6 +6,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import { StoreCtx } from "../shared/context"
 import Link from "../components/Link"
+import Avatar from "../components/Avatar"
 
 const PostContent = styled.article``
 
@@ -49,7 +50,7 @@ const AuthorPost = ({ author, contributors }) => {
       <Link to={`http://${data.site}`} external>
         {data.site}
       </Link>
-      <img src={avatar} alt={data.github} />
+      <Avatar size="small" src={avatar} username={data.github} />
       <p>{data.bio}</p>
     </div>
   )
