@@ -4,6 +4,12 @@ export const GlobalStyle = createGlobalStyle`
 :root {
   font-size: 16px;
 }
+
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+}
+
 html, body, div, span, applet, object, iframe,
 p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,

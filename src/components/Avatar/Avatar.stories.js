@@ -18,6 +18,16 @@ const sizes = {
 
 const url = size => `https://avatars1.githubusercontent.com/fahmiirsyadk?size=${size}`;
 
+export const All = () => (
+    <div>
+        <h1>Avatar</h1>
+        <Avatar size="tiny" src={url(sizes.tiny)} username="Fahmi Irsyad Khairi" />
+        <Avatar size="small" src={url(sizes.small)} username="Fahmi Irsyad Khairi" />
+        <Avatar size="medium" src={url(sizes.medium)} username="Fahmi Irsyad Khairi" />
+        <Avatar size="large" src={url(sizes.large)} username="Fahmi Irsyad Khairi" />
+    </div>
+)
+
 export const Tiny = () => <Avatar size="tiny" src={url(sizes.tiny)} username="Fahmi Irsyad Khairi" />
 export const Small = () => <Avatar size="small" src={url(sizes.small)} username="Fahmi Irsyad Khairi" />
 export const Medium = () => <Avatar size="medium" src={url(sizes.medium)} username="Fahmi Irsyad Khairi" />
