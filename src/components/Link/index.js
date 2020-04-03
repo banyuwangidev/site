@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import propTypes from 'prop-types'
 import styled from "styled-components"
 
 const LinkStyle = styled((props) => <Link {...props} />)`
@@ -39,3 +40,8 @@ const LinkComponent = (props) =>
   )
 
 export default LinkComponent
+
+LinkComponent.propTypes = {
+  decoration: propTypes.string,
+  to: propTypes.string.isRequired,
+}

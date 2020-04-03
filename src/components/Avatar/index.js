@@ -54,12 +54,12 @@ const Image = styled.div`
 `
 
 
-const Avatar = ({ src, size, username, ...props }) => {
+const Avatar = ({ src, size, label, ...props }) => {
     const a11yProps = {};
 
     return (
         <Image size={size} src={src} {...a11yProps} {...props}>
-            <img src={src} alt={username} />
+            <img src={src} alt={label} />
         </Image>
     )
 }
@@ -68,11 +68,8 @@ export default Avatar;
 
 
 Avatar.propTypes = {
-    /**
-     The name of the user (not the nicename)
-    */
-    username: PropTypes.string,
-    src: PropTypes.string,
+    label: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
     /**
      Specify size
     */
@@ -80,7 +77,7 @@ Avatar.propTypes = {
   };
   
   Avatar.defaultProps = {
-    username: 'loading',
+    label: 'loading',
     src: null,
     size: 'medium',
   };

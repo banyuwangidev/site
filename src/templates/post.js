@@ -50,7 +50,7 @@ const AuthorPost = ({ author, contributors }) => {
       <Link to={data.site} external>
         {data.site}
       </Link>
-      <Avatar size="small" src={avatar} username={data.github} />
+      <Avatar size="small" src={avatar} label={data.github} />
       <p>{data.bio}</p>
     </div>
   )
