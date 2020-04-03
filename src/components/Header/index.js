@@ -18,6 +18,10 @@ const Nav = styled.nav`
   right: 0;
   top: 0;
   z-index: 1;
+
+  strong {
+    font-weight: 600;
+  }
 `
 
 const NavItemLeft = styled.div`
@@ -44,28 +48,38 @@ const NavItemRight = styled.div`
   line-height: 1.2;
   min-width: 0px;
   padding: 4px 0;
+
+  div {
+    margin-left: 8px;
+  }
 `
 
 const LinkHolder = styled.div`
+  user-select: none;
+  transition: background 120ms ease-in 0s;
+  cursor: pointer;
+  align-items: center;
   border-radius: 6px;
-  min-width: 0;
-  padding: 4px 0;
-  transition: background-color 0.2s ease;
+  flex-shrink: 1;
+  line-height: 1.2;
+  min-width: 0px;
+  padding: 4px 6px;
+  color: rgb(55, 53, 47);
+ 
   a {
     display: flex;
     align-items: center;
-    padding: 0 4px;
   }
+
   &:hover {
-    background-color: #f3f3f3;
+    background: rgba(55, 53, 47, 0.08);
   }
 `
 const SeperateLine = styled.div`
   color: #999;
   display: inline-block;
-  font-family: "Inter", Arial, Roboto, sans-serif;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 32px;
   margin: 0 2px;
   vertical-align: middle;
@@ -77,7 +91,7 @@ const SpanText = styled.span`
   text-decoration: none;
   color: #111;
   line-height: 32px;
-  padding: 0 4px;
+  padding: 0 8px;
 `
 
 const TextOverflow = styled.div`
@@ -120,7 +134,9 @@ const Header = ({ title, crumbs, menus }) => {
                   <SeperateLine>/</SeperateLine>
                   <LinkHolder>
                     <Link to={`/${path}`} decoration="none">
-                      <TextOverflow size="160px">{path}</TextOverflow>
+                      <TextOverflow size="160px">
+                        <span>{path}</span>
+                      </TextOverflow>
                     </Link>
                   </LinkHolder>
                 </React.Fragment>
@@ -134,7 +150,7 @@ const Header = ({ title, crumbs, menus }) => {
           menus.map(menu => (
             <LinkHolder key={menu.title}>
               <Link to={`/${menu.path}`} decoration="none">
-                {menu.title}
+                <span>{menu.title}</span>
               </Link>
             </LinkHolder>
           ))
