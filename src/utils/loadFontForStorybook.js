@@ -6,7 +6,7 @@ export const loadFontForStorybook = () => {
     const fontLink = document.createElement('link');
 
     fontLink.id = fontLinkId;
-    fontLink.href = "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap";
+    fontLink.href = "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap";
     fontLink.rel = 'stylesheet';
 
     document.head.appendChild(fontLink);
