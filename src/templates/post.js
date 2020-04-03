@@ -4,7 +4,6 @@ import Image from "gatsby-image"
 import styled from "styled-components"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-import { StoreCtx } from "../shared/context"
 import Link from "../components/Link"
 import Avatar from "../components/Avatar"
 
@@ -57,12 +56,7 @@ const AuthorPost = ({ author, contributors }) => {
 }
 
 const PostTemplate = ({ data: { mdx: post } }) => {
-  const { setCrumbPage } = React.useContext(StoreCtx)
   const { image, tags, title, author, date } = post.frontmatter
-
-  React.useEffect(() => {
-    setCrumbPage(() => ["blog", title])
-  }, [setCrumbPage, title])
 
   return (
     <>
