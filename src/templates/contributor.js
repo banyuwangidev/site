@@ -49,7 +49,7 @@ const ContributorTemplate = ({
   )
   const contributor = contributors.find((x) => x.github === context.contributor)
   const avatar = `https://avatars1.githubusercontent.com/${context.contributor}?size=100`
-  const github = `http://github.com/${context.contributor}`
+  const github = `github.com/${context.contributor}`
 
   return (
     <div>
