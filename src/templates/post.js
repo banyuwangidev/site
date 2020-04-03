@@ -39,14 +39,16 @@ export const query = graphql`
 `
 
 const AuthorPost = ({ author, contributors }) => {
-  const data = contributors.find(x => x.github === author)
+  const data = contributors.find((x) => x.github === author)
   const avatar = `https://avatars1.githubusercontent.com/${data.github}?size=100`
 
   return (
     <div>
       <h4>{data.name}</h4>
       <Link to={`/contributors/${data.github}`}>{data.github}</Link>
-      <Link to={data.site} external>{data.site}</Link>
+      <Link to={`http://${data.site}`} external>
+        {data.site}
+      </Link>
       <img src={avatar} alt={data.github} />
       <p>{data.bio}</p>
     </div>
@@ -58,8 +60,8 @@ const PostTemplate = ({ data: { mdx: post } }) => {
   const { image, tags, title, author, date } = post.frontmatter
 
   React.useEffect(() => {
-    setCrumbPage(() => ["blog", title]);
-  },[setCrumbPage, title]);
+    setCrumbPage(() => ["blog", title])
+  }, [setCrumbPage, title])
 
   return (
     <>
@@ -78,7 +80,7 @@ const PostTemplate = ({ data: { mdx: post } }) => {
       <AuthorPost author={author} contributors={post.fields.contributors} />
       <p>{date}</p>
       <div>
-        {tags.map(tag => (
+        {tags.map((tag) => (
           <div key={tag}>
             <Link to={`/tags/${tag}`}>{tag}</Link>
           </div>

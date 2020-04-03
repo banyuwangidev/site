@@ -44,23 +44,33 @@ const ContributorTemplate = ({
   },
 }) => {
   const filteredPost = posts.nodes.filter(
-    post => post.author !== context.contributor
+    (post) => post.author !== context.contributor
   )
-  const contributor = contributors.find(x => x.github === context.contributor)
+  const contributor = contributors.find((x) => x.github === context.contributor)
   const avatar = `https://avatars1.githubusercontent.com/${context.contributor}?size=100`
   const github = `http://github.com/${context.contributor}`
-  
+
   return (
     <div>
       <h1>Contributor</h1>
       <img src={avatar} alt={context.contributor} />
       <h1>{contributor.name}</h1>
       <p>{contributor.bio}</p>
-      <Link to={github} external>{contributor.github}</Link>
+      <Link to={github} external>
+        {contributor.github}
+      </Link>
+      <Link to={`http://${contributor.site}`} external>
+        {contributor.site}
+      </Link>
       <div>
-        {filteredPost.map(({ frontmatter: post, excerpt, fields: { slug }}) => (
-          <PostItem key={slug} post={{...post, excerpt, slug, contributors }}/>
-        ))}
+        {filteredPost.map(
+          ({ frontmatter: post, excerpt, fields: { slug } }) => (
+            <PostItem
+              key={slug}
+              post={{ ...post, excerpt, slug, contributors }}
+            />
+          )
+        )}
       </div>
     </div>
   )
