@@ -1,30 +1,38 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Full from './Full'
 import Regular from './Regular'
 import Header from '../Header'
+
 import headerMenu from '../../shared/headerMenu'
 import { GlobalStyle } from "../../shared/global"
-import useCrumb from '../../utils/useCrumb'
+import useMeta from '../../utils/useMeta'
 
-const Layout = ({ children, pageContext }) => {
-  const path = useCrumb();
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
+const pathToArr = (path, data) => {
+  const pathFiltered = path.replace(/^\/+|\/+$/g, '').split("/");
+  const res = data ? [pathFiltered[0],data] : pathFiltered[0] === "" ? 0 : [pathFiltered[0]];
+  return res;
+}
+
+  export const query = graphql`
+    query($slug: String!) {
+      mdx(fields: { slug: { eq: $slug } }) {
+        frontmatter {
           title
         }
       }
-    }
-  `)
+    }`
+
+const Layout = ({ data, children, pageContext, location }) => {
+  const { title } = useMeta();
+  const crumbs = pathToArr(location.pathname, data?.mdx?.frontmatter?.title)
 
   return (
     <>
       <GlobalStyle />
-      <Header title={data.site.siteMetadata.title} crumbs={path} menus={headerMenu} />
+      <Header title={title} crumbs={crumbs} menus={headerMenu} />
         {
             pageContext.layout === "full" ? <Full>{children}</Full> : <Regular>{children}</Regular>
         }
