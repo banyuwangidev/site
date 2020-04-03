@@ -18,10 +18,10 @@ export default () => {
   return (
     <>
       {data.map(({ fieldValue, totalCount: count }) => {
-        const tag = fieldValue.split("-").join(" ");
+        const t = fieldValue.replace(/-/gi, "")
         return (
-          <div key={tag}>
-            <Link to={`/tags/${tag}`}> {tag}</Link>
+          <div key={fieldValue}>
+            <Link to={`/tags/${fieldValue}`}>{`#${t}`}</Link>
             <span>{count}</span>
           </div>
         )
