@@ -2,15 +2,15 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Full from './Full'
-import Regular from './Regular'
-import Header from '../Header'
-import headerMenu from '../../shared/headerMenu'
+import Full from "./Full"
+import Regular from "./Regular"
+import Header from "../Header"
+import headerMenu from "../../shared/headerMenu"
 import { GlobalStyle } from "../../shared/global"
-import useCrumb from '../../utils/useCrumb'
+import useCrumb from "../../utils/useCrumb"
 
 const Layout = ({ children, pageContext }) => {
-  const path = useCrumb();
+  const path = useCrumb()
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -24,11 +24,17 @@ const Layout = ({ children, pageContext }) => {
   return (
     <>
       <GlobalStyle />
-      <Header title={data.site.siteMetadata.title} crumbs={path} menus={headerMenu} />
-        {
-            pageContext.layout === "full" ? <Full>{children}</Full> : <Regular>{children}</Regular>
-        }
-     </>
+      <Header
+        title={data.site.siteMetadata.title}
+        crumbs={path}
+        menus={headerMenu}
+      />
+      {pageContext.layout === "full" ? (
+        <Full>{children}</Full>
+      ) : (
+        <Regular>{children}</Regular>
+      )}
+    </>
   )
 }
 

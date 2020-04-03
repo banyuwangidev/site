@@ -116,7 +116,7 @@ const Header = ({ title, crumbs, menus }) => {
           <Link to="/" decoration="none">
             <img style={{ marginRight: 8 }} src={Logo} alt="logo" />
             <TextOverflow size="160px">
-              <strong>{title}</strong>
+              <strong>{title.replace(/(\s)/gi, "").toLowerCase()}</strong>
             </TextOverflow>
           </Link>
         </LinkHolder>
