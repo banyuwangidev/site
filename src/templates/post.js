@@ -41,7 +41,7 @@ export const query = graphql`
 
 const AuthorPost = ({ author, contributors }) => {
   const data = contributors.find((x) => x.github === author)
-  const avatar = `https://avatars1.githubusercontent.com/${data.github}?size=100`
+  const avatar = `https://avatars1.githubusercontent.com/${data.github}?size=42`
 
   return (
     <div>

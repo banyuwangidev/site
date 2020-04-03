@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import Link from '../Link'
 
 const PostItem = ({ post }) => {
   const { name, github } = post.contributors.find(
@@ -8,13 +8,13 @@ const PostItem = ({ post }) => {
 
   return (
     <article>
-        <h2>
-          <Link to={`/blog/${post.slug}`}>
-            {post.title}
-          </Link>
-        </h2>
+        <Link to={`/blog/${post.slug}`} username={post.title} decoration="none">
+          <h2>{post.title}</h2>
+        </Link>
         <p>{post.excerpt}</p>
-        <p><Link to={`/contributors/${github}`}>{name}</Link> on {post.date}</p>
+        <p>
+          <Link to={`/contributors/${github}`} username={name} decoration="none">{name}</Link> on {post.date}
+        </p>
     </article>
   )
 }
