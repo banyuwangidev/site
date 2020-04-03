@@ -60,7 +60,7 @@ const ContributorTemplate = ({
       <Link to={github} external>
         {contributor.github}
       </Link>
-      <Link to={`http://${contributor.site}`} external>
+      <Link to={contributor.site} external>
         {contributor.site}
       </Link>
       <div>
