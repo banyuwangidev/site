@@ -65,7 +65,7 @@ const LinkHolder = styled.div`
   min-width: 0px;
   padding: 4px 6px;
   color: rgb(55, 53, 47);
- 
+
   a {
     display: flex;
     align-items: center;
@@ -91,7 +91,7 @@ const SpanText = styled.span`
   text-decoration: none;
   color: #111;
   line-height: 32px;
-  padding: 0 8px;
+  padding: 0 6px;
 `
 
 const TextOverflow = styled.div`
@@ -146,15 +146,13 @@ const Header = ({ title, crumbs, menus }) => {
       </NavItemLeft>
       <FlexSeperate />
       <NavItemRight>
-        {
-          menus.map(menu => (
-            <LinkHolder key={menu.title}>
-              <Link to={`/${menu.path}`} decoration="none">
-                <span>{menu.title}</span>
-              </Link>
-            </LinkHolder>
-          ))
-        }
+        {menus.map((menu) => (
+          <LinkHolder key={menu.title}>
+            <Link to={`/${menu.path}`} decoration="none">
+              <span>{menu.title}</span>
+            </Link>
+          </LinkHolder>
+        ))}
       </NavItemRight>
     </Nav>
   )
