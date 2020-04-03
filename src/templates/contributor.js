@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import PostItem from "../components/PostItem"
 import Link from "../components/Link"
+import Avatar from "../components/Avatar"
 
 export const query = graphql`
   query($contributor: String!) {
@@ -53,7 +54,7 @@ const ContributorTemplate = ({
   return (
     <div>
       <h1>Contributor</h1>
-      <img src={avatar} alt={context.contributor} />
+      <Avatar size="large" src={avatar} username={context.contributor} />
       <h1>{contributor.name}</h1>
       <p>{contributor.bio}</p>
       <Link to={github} external>
