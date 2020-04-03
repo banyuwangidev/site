@@ -47,7 +47,7 @@ const AuthorPost = ({ author, contributors }) => {
     <div>
       <h4>{data.name}</h4>
       <Link to={`/contributors/${data.github}`}>{data.github}</Link>
-      <Link to={`http://${data.site}`} external>
+      <Link to={data.site} external>
         {data.site}
       </Link>
       <Avatar size="small" src={avatar} username={data.github} />
