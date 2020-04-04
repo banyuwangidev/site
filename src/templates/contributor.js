@@ -1,8 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
+
 import PostItem from "../components/PostItem"
 import Link from "../components/Link"
 import Avatar from "../components/Avatar"
+import { StoreCtx } from '../shared/context'
 
 export const query = graphql`
   query($contributor: String!) {
@@ -44,12 +46,18 @@ const ContributorTemplate = ({
     },
   },
 }) => {
+  const { setCrumbPage } = React.useContext(StoreCtx);
   const filteredPost = posts.nodes.filter(
     (post) => post.author !== context.contributor
-  )
-  const contributor = contributors.find((x) => x.github === context.contributor)
-  const avatar = `https://avatars1.githubusercontent.com/${context.contributor}?size=100`
-  const github = `github.com/${context.contributor}`
+    )
+    const contributor = contributors.find((x) => x.github === context.contributor)
+    const avatar = `https://avatars1.githubusercontent.com/${context.contributor}?size=100`
+    const github = `github.com/${context.contributor}`
+    
+    React.useEffect(() => {
+      setCrumbPage(() => contributor.name);
+      return () => {setCrumbPage(() => undefined);}
+    },[setCrumbPage, contributor.name]);
 
   return (
     <div>

@@ -21,7 +21,6 @@ const Layout = ({ children, pageContext, location }) => {
   const { crumbPage } = React.useContext(StoreCtx);
 
   const crumbs = pathToArr(location.pathname, crumbPage);
-  console.log(crumbs);
 
   return (
     <>
