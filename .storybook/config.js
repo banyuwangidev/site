@@ -1,33 +1,32 @@
-import * as React from 'react'
+import * as React from "react"
 import { configure, addDecorator, addParameters } from "@storybook/react"
-import { withInfo } from "@storybook/addon-info";
+import { withInfo } from "@storybook/addon-info"
 import { action } from "@storybook/addon-actions"
-import { withA11y } from '@storybook/addon-a11y';
-import { DocsPage } from '@storybook/addon-docs/blocks';
+import { withA11y } from "@storybook/addon-a11y"
+import { DocsPage } from "@storybook/addon-docs/blocks"
 
-import { loadFontForStorybook } from '../src/utils/loadFontForStorybook'
-import { GlobalStyle } from '../src/shared/global'
-
+import { loadFontForStorybook } from "../src/utils/loadFontForStorybook"
+import { GlobalStyle } from "../src/shared/global"
 
 addParameters({
   options: {
-    showRoots: true
+    showRoots: true,
   },
   docs: { page: DocsPage },
   dependencies: {
     withStoriesOnly: true,
-    hideEmpty: true
-  }
+    hideEmpty: true,
+  },
 })
 
 // global style
-addDecorator(withA11y);
-addDecorator(withInfo());
-addDecorator(story => (
-    <>
-        <GlobalStyle />
-        {story()}
-    </>
+addDecorator(withA11y)
+addDecorator(withInfo())
+addDecorator((story) => (
+  <>
+    <GlobalStyle />
+    {story()}
+  </>
 ))
 
 // automatically import all files ending in *.stories.js
@@ -41,8 +40,8 @@ global.___loader = {
 // Gatsby internal mocking to prevent unnecessary errors in storybook testing environment
 global.__PATH_PREFIX__ = ""
 // This is to utilized to override the window.___navigate method Gatsby defines and uses to report what path a Link would be taking us to if it wasn't inside a storybook
-window.___navigate = pathname => {
+window.___navigate = (pathname) => {
   action("NavigateTo:")(pathname)
 }
 
-loadFontForStorybook();
+loadFontForStorybook()

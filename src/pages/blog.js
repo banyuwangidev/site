@@ -1,4 +1,3 @@
-
 import * as React from "react"
 
 import SEO from "../components/seo"
@@ -12,7 +11,7 @@ const Blog = () => {
     <>
       <SEO title="blogs" />
       <h1>Blog posts</h1>
-      {posts.map(post => (
+      {posts.map((post) => (
         <PostItem key={post.slug} post={post} />
       ))}
     </>

@@ -1,6 +1,6 @@
 import React from "react"
 
-import Link from '../components/Link'
+import Link from "../components/Link"
 import SEO from "../components/seo"
 
 const IndexPage = () => {
@@ -8,7 +8,9 @@ const IndexPage = () => {
     <>
       <SEO title="Banyuwangi DEV" />
       <h1>Banyuwangi DEV</h1>
-      <Link to="/blog" decoration="none">Blog</Link>
+      <Link to="/blog" decoration="none">
+        Blog
+      </Link>
     </>
   )
 }

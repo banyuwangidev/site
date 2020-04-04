@@ -36,7 +36,7 @@ const usePosts = () => {
     }
   `)
 
-  return data.map(post => {
+  return data.map((post) => {
     return {
       title: post.frontmatter.title,
       author: post.frontmatter.author,

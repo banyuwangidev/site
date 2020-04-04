@@ -1,12 +1,12 @@
-import * as React from 'react'
-import PropTypes from 'prop-types'
-import styled, { css } from 'styled-components'
+import * as React from "react"
+import PropTypes from "prop-types"
+import styled, { css } from "styled-components"
 
 export const sizes = {
-    large: 72,
-    medium: 56,
-    small: 42,
-    tiny: 32
+  large: 72,
+  medium: 56,
+  small: 42,
+  tiny: 32,
 }
 
 const Image = styled.div`
@@ -29,55 +29,61 @@ const Image = styled.div`
     }
 
     /* tiny */
-    ${props => props.size === "tiny" && css`
+    ${(props) =>
+      props.size === "tiny" &&
+      css`
         width: ${sizes.tiny}px;
         height: ${sizes.tiny}px;
-    `}
+      `}
 
     /* small */
-    ${props => props.size === "small" && css`
+    ${(props) =>
+      props.size === "small" &&
+      css`
         width: ${sizes.small}px;
         height: ${sizes.small}px;
-    `}
+      `}
 
     /* medium */
-    ${props => props.size === "medium" && css`
+    ${(props) =>
+      props.size === "medium" &&
+      css`
         width: ${sizes.medium}px;
         height: ${sizes.medium}px;
-    `}
+      `}
 
     /* large */
-    ${props => props.size === "large" && css`
+    ${(props) =>
+      props.size === "large" &&
+      css`
         width: ${sizes.large}px;
         height: ${sizes.large}px;
-    `}
+      `}
 `
 
-
 const Avatar = ({ src, size, label, ...props }) => {
-    const a11yProps = {};
+  const a11yProps = {}
 
-    return (
-        <Image size={size} src={src} {...a11yProps} {...props}>
-            <img src={src} alt={label} />
-        </Image>
-    )
+  return (
+    <Image size={size} src={src} {...a11yProps} {...props}>
+      <img src={src} alt={label} />
+    </Image>
+  )
 }
 
-export default Avatar;
-
+export default Avatar
 
 Avatar.propTypes = {
-    label: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
-    /**
+  label: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  /**
      Specify size
     */
-    size: PropTypes.oneOf(Object.keys(sizes)),
-  };
-  
-  Avatar.defaultProps = {
-    label: 'loading',
-    src: null,
-    size: 'medium',
-  };
+  size: PropTypes.oneOf(Object.keys(sizes)),
+}
+
+Avatar.defaultProps = {
+  label: "loading",
+  src: null,
+  size: "medium",
+}

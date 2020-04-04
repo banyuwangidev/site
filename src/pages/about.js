@@ -1,7 +1,7 @@
-import * as React from 'react'
+import * as React from "react"
 
 const About = () => {
-    return <h1>About PAGE</h1>
+  return <h1>About PAGE</h1>
 }
 
-export default About;
+export default About

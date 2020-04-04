@@ -50,9 +50,9 @@ const createPost = async (title, username) => {
   spinnerPost.stop()
 }
 
-const checkUsername = async username => {
+const checkUsername = async (username) => {
   return contributorList.find(
-    contributor => contributor.github === `${username}`
+    (contributor) => contributor.github === `${username}`
   )
 }
 
@@ -75,7 +75,7 @@ const askActions = () => {
       type: "list",
       choices: ["Membuat post", "Menambah kontributor", "Keluar"],
       message: "Pilih aksi membuat post atau menambah contributor ?",
-      filter: function(val) {
+      filter: function (val) {
         return val === "Membuat post"
           ? "post"
           : val === "Menambah kontributor"
@@ -128,7 +128,7 @@ const createContributor = async () => {
       name: "site",
       type: "input",
       message: "Masukkan alamat situsmu jika ada (kosongi jika tidak ada)",
-      default: function() {
+      default: function () {
         return ""
       },
     },
@@ -136,7 +136,7 @@ const createContributor = async () => {
       name: "bio",
       type: "input",
       message: "Masukkan bio kamu",
-      default: function() {
+      default: function () {
         return ""
       },
     },

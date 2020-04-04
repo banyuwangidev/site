@@ -1,7 +1,7 @@
-import * as React from 'react'
+import * as React from "react"
 
 const Event = () => {
-    return <h1>EVENT PAGE</h1>
+  return <h1>EVENT PAGE</h1>
 }
 
-export default Event;
+export default Event

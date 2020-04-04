@@ -70,13 +70,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   nodes.forEach(({ frontmatter, fields }) => {
     // loop tag
     if (frontmatter.tags) {
-      frontmatter.tags.forEach(tag => {
+      frontmatter.tags.forEach((tag) => {
         tagSet.add(tag)
       })
     }
 
     if (fields.contributors) {
-      fields.contributors.forEach(contributor => {
+      fields.contributors.forEach((contributor) => {
         contributorSet.add(contributor)
       })
     }
@@ -91,7 +91,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   })
 
   const tagList = Array.from(tagSet)
-  tagList.forEach(tag => {
+  tagList.forEach((tag) => {
     actions.createPage({
       path: `/tags/${tag}`,
       component: tagTemplate,
@@ -102,7 +102,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   })
 
   const contributorList = Array.from(contributorSet)
-  contributorList.forEach(contri => {
+  contributorList.forEach((contri) => {
     actions.createPage({
       path: `/contributors/${contri.github}`,
       component: ContributorTemplate,
