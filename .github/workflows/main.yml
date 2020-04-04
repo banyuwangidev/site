@@ -4,39 +4,17 @@ name: CI Gatsby Ubuntu
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: pull_request
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  audit:
     runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-        node-version: [13.x]
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - name: Audit Netlify deploy preview
+      uses: jakejarvis/lighthouse-action@master
       with:
-        node-version: ${{ matrix.node-version }}
-
-    # Runs npm install
-    - name: Installing packages
-      run: npm install
-      
-    # Runs a single command using the runners shell
-    - name: Building project
-      run: npm run build
-    
-    # Run lighthouse test
-    - name: Lighthouse Audit
-      uses: jakejarvis/lighthouse-action@v0.3.2
-    
+        netlify_site: 'https://epic-einstein-d54c6c.netlify.com'
+    - uses: actions/upload-artifact@master
+      with:
+        name: report
+        path: './report'
