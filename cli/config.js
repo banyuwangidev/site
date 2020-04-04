@@ -26,9 +26,11 @@ author: "${username}"
 image: ""
 date: ${date}
 tags:
-  - "new year"
+  - "first-post"
   - "programming"
 ---
+[//]: # (Ini hanya comment, reminder: gunakan strip sebagai pemisah kalimat pada tag)
+
 This is my next blog post. I’m on a roll!
 `
 }
