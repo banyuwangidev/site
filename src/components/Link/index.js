@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
-import propTypes from 'prop-types'
+import propTypes from "prop-types"
 import styled from "styled-components"
 
 const LinkStyle = styled((props) => <Link {...props} />)`

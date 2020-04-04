@@ -27,11 +27,13 @@ export const query = graphql`
 
 const PostTemplate = ({ pageContext: context, data }) => {
   const postList = data.allMdx.nodes
-  const tag = context.tag.split("-").join(" ");
-  
+  const tag = context.tag.replace(/-/gi, "")
+
   return (
     <>
-      <h3>Tag yang berhubungan dengan {tag}</h3>
+      <h3>
+        Tag yang berhubungan dengan <u>{`#${tag}`}</u>
+      </h3>
       {postList.map(
         ({ frontmatter: post, excerpt, fields: { slug, contributors } }) => (
           <PostItem

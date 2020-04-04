@@ -84,10 +84,10 @@ const PostTemplate = ({ data: { mdx: post } }) => {
       <p>{date}</p>
       <div>
         {tags.map((tag) => {
-          const t = tag.split("-").join(" ");
+          const t = tag.replace(/-/gi, "")
           return (
             <div key={t}>
-              <Link to={`/tags/${tag}`}>{t}</Link>
+              <Link to={`/tags/${tag}`}>{`#${t}`}</Link>
             </div>
           )
         })}
