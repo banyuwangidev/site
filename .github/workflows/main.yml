@@ -19,7 +19,7 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 13.x]
+        node-version: [13.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -35,3 +35,8 @@ jobs:
     # Runs a single command using the runners shell
     - name: Building project
       run: npm run build
+    
+    # Run lighthouse test
+    - name: Lighthouse Audit
+      uses: jakejarvis/lighthouse-action@v0.3.2
+    
