@@ -7,6 +7,8 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import Link from "../components/Link"
 import Avatar from "../components/Avatar"
 
+import { StoreCtx } from '../shared/context'
+
 const PostContent = styled.article``
 
 export const query = graphql`
@@ -56,7 +58,13 @@ const AuthorPost = ({ author, contributors }) => {
 }
 
 const PostTemplate = ({ data: { mdx: post } }) => {
+  const { setCrumbPage } = React.useContext(StoreCtx);
   const { image, tags, title, author, date } = post.frontmatter
+
+  React.useEffect(() => {
+    setCrumbPage(() => title);
+    return () => {setCrumbPage(() => undefined);}
+  },[setCrumbPage, title]);
 
   return (
     <>

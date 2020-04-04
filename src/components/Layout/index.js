@@ -1,6 +1,5 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-import { graphql } from "gatsby"
 
 import Full from './Full'
 import Regular from './Regular'
@@ -8,6 +7,7 @@ import Header from '../Header'
 
 import headerMenu from '../../shared/headerMenu'
 import { GlobalStyle } from "../../shared/global"
+import { StoreCtx } from '../../shared/context'
 import useMeta from '../../utils/useMeta'
 
 const pathToArr = (path, data) => {
@@ -16,18 +16,12 @@ const pathToArr = (path, data) => {
   return res;
 }
 
-  export const query = graphql`
-    query($slug: String!) {
-      mdx(fields: { slug: { eq: $slug } }) {
-        frontmatter {
-          title
-        }
-      }
-    }`
-
-const Layout = ({ data, children, pageContext, location }) => {
+const Layout = ({ children, pageContext, location }) => {
   const { title } = useMeta();
-  const crumbs = pathToArr(location.pathname, data?.mdx?.frontmatter?.title)
+  const { crumbPage } = React.useContext(StoreCtx);
+
+  const crumbs = pathToArr(location.pathname, crumbPage);
+  console.log(crumbs);
 
   return (
     <>
