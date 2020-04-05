@@ -1,7 +1,7 @@
 import React from "react"
 import Link from "../Link"
 
-const PostItem = ({ post }) => {
+const Article = ({ post }) => {
   const { name, github } = post.contributors.find(
     ({ github }) => github === post.author
   )
@@ -22,4 +22,4 @@ const PostItem = ({ post }) => {
   )
 }
 
-export default PostItem
+export default Article

@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import PostItem from "../components/PostItem"
+import Article from "../components/Article"
 import { StoreCtx } from "../shared/context"
 
 export const query = graphql`
@@ -46,7 +46,7 @@ const PostTemplate = ({ pageContext: context, data }) => {
       </h3>
       {postList.map(
         ({ frontmatter: post, excerpt, fields: { slug, contributors } }) => (
-          <PostItem
+          <Article
             key={slug}
             post={{ ...post, excerpt, slug, contributors }}
           />

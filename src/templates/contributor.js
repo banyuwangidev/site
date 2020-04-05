@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import PostItem from "../components/PostItem"
+import Article from "../components/Article"
 import Link from "../components/Link"
 import Avatar from "../components/Avatar"
 import { StoreCtx } from "../shared/context"
@@ -76,7 +76,7 @@ const ContributorTemplate = ({
       <div>
         {filteredPost.map(
           ({ frontmatter: post, excerpt, fields: { slug } }) => (
-            <PostItem
+            <Article
               key={slug}
               post={{ ...post, excerpt, slug, contributors }}
             />
