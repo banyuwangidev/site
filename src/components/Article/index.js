@@ -1,7 +1,7 @@
 import React from "react"
-import styled from 'styled-components'
+import styled from "styled-components"
 
-import Avatar from '../Avatar'
+import Avatar from "../Avatar"
 import Link from "../Link"
 
 // NEED TO CREATE SIZE OF TYPOGRAPH
@@ -30,10 +30,12 @@ const ArticlePointer = styled.div`
   margin: 16px 0;
   span {
     transition: all 0.2s ease;
+    position: relative;
+    left: 0;
   }
 
   a:hover > span {
-    margin-left: 6px;
+    left: 6px;
   }
 `
 
@@ -48,11 +50,19 @@ const Article = ({ post }) => {
         <h1>{post.title}</h1>
       </Link>
       <ArticleAuthor>
-        <Avatar src={`https://avatars1.githubusercontent.com/${post.author}?size=32`} size="tiny" />
+        <Avatar
+          src={`https://avatars1.githubusercontent.com/${post.author}?size=32`}
+          size="tiny"
+        />
         <p>
-          <Link to={`/contributors/${github}`} username={name} decoration="none">
-              {`${name} `}
-          </Link>on {post.date}
+          <Link
+            to={`/contributors/${github}`}
+            username={name}
+            decoration="none"
+          >
+            {`${name} `}
+          </Link>
+          on {post.date}
         </p>
       </ArticleAuthor>
       <ArticleExcerpt>{post.excerpt}</ArticleExcerpt>
