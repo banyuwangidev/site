@@ -8,7 +8,7 @@ const Full = ({ children }) => (
       display: `flex`,
       flexDirection: `column`,
       minHeight: `78vh`,
-      maxWidth: 800,
+      maxWidth: 700,
       margin: `140px auto 0`,
     }}
   >

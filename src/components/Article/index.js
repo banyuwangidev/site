@@ -1,5 +1,30 @@
 import React from "react"
+import styled from 'styled-components'
+
+import Avatar from '../Avatar'
 import Link from "../Link"
+
+// NEED TO CREATE SIZE OF TYPOGRAPH
+const ArticlePost = styled.article`
+  h1 {
+    font-size: 40px;
+    margin-top: 8px 0 16px 0;
+    line-height: 48px;
+  }
+`
+
+const ArticleAuthor = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 8px 0 16px;
+  a {
+    margin-left: 8px;
+  }
+`
+
+const ArticleExcerpt = styled.p`
+  color: #565656;
+`
 
 const Article = ({ post }) => {
   const { name, github } = post.contributors.find(
@@ -7,18 +32,20 @@ const Article = ({ post }) => {
   )
 
   return (
-    <article>
+    <ArticlePost>
       <Link to={`/blog/${post.slug}`} username={post.title} decoration="none">
-        <h2>{post.title}</h2>
+        <h1>{post.title}</h1>
       </Link>
-      <p>{post.excerpt}</p>
-      <p>
-        <Link to={`/contributors/${github}`} username={name} decoration="none">
-          {name}
-        </Link>{" "}
-        on {post.date}
-      </p>
-    </article>
+      <ArticleAuthor>
+        <Avatar src={`https://avatars1.githubusercontent.com/${post.author}?size=32`} size="tiny" />
+        <p>
+          <Link to={`/contributors/${github}`} username={name} decoration="none">
+              {`${name} `}
+          </Link>on {post.date}
+        </p>
+      </ArticleAuthor>
+      <ArticleExcerpt>{post.excerpt}</ArticleExcerpt>
+    </ArticlePost>
   )
 }
 

@@ -10,7 +10,6 @@ const Blog = () => {
   return (
     <>
       <SEO title="blogs" />
-      <h1>Blog posts</h1>
       {posts.map((post) => (
         <Article key={post.slug} post={post} />
       ))}

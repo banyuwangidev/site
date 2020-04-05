@@ -19,7 +19,6 @@ const Image = styled.div`
     display: block;
     display: inline-flex;
     justify-content: center;
-    margin: 0 auto 40px;
     overflow: hidden;
     
     &:img {
