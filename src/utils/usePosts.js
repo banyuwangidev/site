@@ -23,7 +23,7 @@ const usePosts = () => {
               }
             }
           }
-          excerpt
+          excerpt(pruneLength: 180)
           fields {
             slug
             contributors {

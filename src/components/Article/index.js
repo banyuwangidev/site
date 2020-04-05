@@ -26,6 +26,17 @@ const ArticleExcerpt = styled.p`
   color: #565656;
 `
 
+const ArticlePointer = styled.div`
+  margin: 16px 0;
+  span {
+    transition: all 0.2s ease;
+  }
+
+  a:hover > span {
+    margin-left: 6px;
+  }
+`
+
 const Article = ({ post }) => {
   const { name, github } = post.contributors.find(
     ({ github }) => github === post.author
@@ -45,6 +56,11 @@ const Article = ({ post }) => {
         </p>
       </ArticleAuthor>
       <ArticleExcerpt>{post.excerpt}</ArticleExcerpt>
+      <ArticlePointer>
+        <Link to={`/blog/${post.slug}`} username={post.title} decoration="none">
+          Baca selengkapnya <span>--></span>
+        </Link>
+      </ArticlePointer>
     </ArticlePost>
   )
 }
