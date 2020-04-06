@@ -9,6 +9,8 @@ const Full = ({ children }) => (
       flexDirection: `column`,
       minHeight: `78vh`,
       maxWidth: 700,
+      paddingLeft: 20,
+      paddingRight: 20,
       margin: `140px auto 0`,
     }}
   >
