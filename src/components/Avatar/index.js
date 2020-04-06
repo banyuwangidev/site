@@ -65,7 +65,7 @@ const Avatar = ({ src, size, label, ...props }) => {
 
   return (
     <Image size={size} src={src} {...a11yProps} {...props}>
-      <img src={src} alt={label} />
+      <img src={src} alt={label} draggable="false" />
     </Image>
   )
 }
