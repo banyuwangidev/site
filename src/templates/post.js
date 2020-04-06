@@ -25,7 +25,7 @@ export const query = graphql`
         date(fromNow: true)
         image {
           sharp: childImageSharp {
-            fixed(width: 1000, height: 500) {
+            fixed(width: 700, height: 300) {
               ...GatsbyImageSharpFixed_withWebp
             }
           }
