@@ -14215,7 +14215,7 @@ scroll-behavior@^0.9.12:
     dom-helpers "^3.4.0"
     invariant "^2.2.4"
 
-scroll-data-hook@^1.0.1:
+scroll-data-hook@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/scroll-data-hook/-/scroll-data-hook-1.0.1.tgz#5c9ae9c7ee1449ee4af51691f6f10922587fc967"
   integrity sha512-uCqifdGwroIBiewQy+YFHAtU1Vr/rS7Gvzmr4fqb24abNuHaW7AB3zczb/LU09TS0Z/3Xyd51sUWm717+7CbZQ==
