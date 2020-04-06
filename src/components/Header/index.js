@@ -1,6 +1,7 @@
 import React from "react"
 import styled, { css } from "styled-components"
 import PropTypes from "prop-types"
+import { useScrollData } from 'scroll-data-hook'
 
 import Logo from "../../assets/images/logo-32.png"
 import Link from "../Link"
@@ -112,17 +113,12 @@ const FlexSeperate = styled.div`
 `
 
 const Header = ({ title, crumbs, menus }) => {
-  const [isScrolled, setIsScrolled] = React.useState(false);
-  React.useEffect(() => {
-      document.addEventListener("scroll", () => {
-          setIsScrolled(window.scrollY > 100);
-      });
-      setIsScrolled(window.scrollY > 100);
-  },[setIsScrolled]);
+  const { position } = useScrollData();
+
   const crumbsLen = crumbs.length === undefined ? 0 : crumbs.length
 
   return (
-    <Nav scrolled={isScrolled}>
+    <Nav scrolled={position.y > 100}>
       <NavItemLeft>
         <LinkHolder>
           <Link to="/" decoration="none">

@@ -76,7 +76,7 @@ const PostTemplate = ({ data: { mdx: post } }) => {
     <>
       {image ? (
         <Image
-          style={{ width: "100%", maxWidth: 700 }}
+          style={{ width: "100%", maxWidth: 700, borderRadius: 6, marginBottom: 16 }}
           objectFit="cover"
           objectPosition="50% 50%"
           fixed={image.sharp.fixed}
