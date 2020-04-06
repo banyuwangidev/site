@@ -10,6 +10,10 @@ import Avatar from "../components/Avatar"
 import { StoreCtx } from "../shared/context"
 
 const PostContent = styled.article``
+const PostTitle = styled.h1`
+  text-align: center;
+  font-size: 40px;
+`
 
 export const query = graphql`
   query($slug: String!) {
@@ -72,8 +76,7 @@ const PostTemplate = ({ data: { mdx: post } }) => {
     <>
       {image ? (
         <Image
-          style={{ width: "100%", maxWidth: 1440 }}
-          imgStyle={{ height: 400 }}
+          style={{ width: "100%", maxWidth: 700 }}
           objectFit="cover"
           objectPosition="50% 50%"
           fixed={image.sharp.fixed}
@@ -81,7 +84,7 @@ const PostTemplate = ({ data: { mdx: post } }) => {
         />
       ) : null}
 
-      <h1>{title}</h1>
+      <PostTitle>{title}</PostTitle>
       <AuthorPost author={author} contributors={post.fields.contributors} />
       <p>{date}</p>
       <div>

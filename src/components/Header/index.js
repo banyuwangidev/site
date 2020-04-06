@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import PropTypes from "prop-types"
 
 import Logo from "../../assets/images/logo-32.png"
@@ -11,13 +11,18 @@ const Nav = styled.nav`
   left: 0;
   justify-content: space-between;
   margin: 0 auto;
-  padding: 16px 16px 0 16px;
+  padding: 16px;
   align-items: center;
   position: fixed;
   display: flex;
   right: 0;
   top: 0;
   z-index: 1;
+
+  ${props => props.scrolled && css`
+    border-bottom: 1px solid #dadada6b;
+    background-color: white;
+  `}
 
   strong {
     font-weight: 600;
@@ -107,10 +112,17 @@ const FlexSeperate = styled.div`
 `
 
 const Header = ({ title, crumbs, menus }) => {
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  React.useEffect(() => {
+      document.addEventListener("scroll", () => {
+          setIsScrolled(window.scrollY > 100);
+      });
+      setIsScrolled(window.scrollY > 100);
+  },[setIsScrolled]);
   const crumbsLen = crumbs.length === undefined ? 0 : crumbs.length
 
   return (
-    <Nav>
+    <Nav scrolled={isScrolled}>
       <NavItemLeft>
         <LinkHolder>
           <Link to="/" decoration="none">
