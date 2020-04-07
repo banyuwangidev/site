@@ -46,10 +46,7 @@ const PostTemplate = ({ pageContext: context, data }) => {
       </h3>
       {postList.map(
         ({ frontmatter: post, excerpt, fields: { slug, contributors } }) => (
-          <Article
-            key={slug}
-            post={{ ...post, excerpt, slug, contributors }}
-          />
+          <Article key={slug} post={{ ...post, excerpt, slug, contributors }} />
         )
       )}
     </>

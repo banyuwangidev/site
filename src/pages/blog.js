@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import SEO from "../components/seo"
-import ArticleList from '../components/ArticleList'
+import ArticleList from "../components/ArticleList"
 import usePosts from "../utils/usePosts"
 
 const Blog = () => {

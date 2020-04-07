@@ -1,7 +1,7 @@
 import React from "react"
 import styled, { css } from "styled-components"
 import PropTypes from "prop-types"
-import { useScrollData } from 'scroll-data-hook'
+import { useScrollData } from "scroll-data-hook"
 
 import Logo from "../../assets/images/logo-32.png"
 import Link from "../Link"
@@ -20,10 +20,12 @@ const Nav = styled.nav`
   top: 0;
   z-index: 1;
 
-  ${props => props.scrolled && css`
-    border-bottom: 1px solid #dadada6b;
-    background-color: white;
-  `}
+  ${(props) =>
+    props.scrolled &&
+    css`
+      border-bottom: 1px solid #dadada6b;
+      background-color: white;
+    `}
 
   strong {
     font-weight: 600;
@@ -113,7 +115,7 @@ const FlexSeperate = styled.div`
 `
 
 const Header = ({ title, crumbs, menus }) => {
-  const { position } = useScrollData();
+  const { position } = useScrollData()
 
   const crumbsLen = crumbs.length === undefined ? 0 : crumbs.length
 

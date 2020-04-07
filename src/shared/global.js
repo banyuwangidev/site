@@ -1,5 +1,16 @@
 import { createGlobalStyle } from "styled-components"
 
+export const colors = {
+  primary: "#233758",
+  primaryLight: "#E8F0FD",
+  success: "#0a5d39",
+  successLight: "#E3F8EF",
+  warning: "#7b5f15",
+  warningLight: "#FFEDBF",
+  error: "#8a0b28",
+  errorLight: "#FDE3E9",
+}
+
 export const GlobalStyle = createGlobalStyle`
 :root {
   font-size: 16px;

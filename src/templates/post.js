@@ -6,6 +6,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Link from "../components/Link"
 import Avatar from "../components/Avatar"
+import Alert from "../components/Alert"
 
 import { StoreCtx } from "../shared/context"
 
@@ -22,7 +23,7 @@ export const query = graphql`
         title
         author
         tags
-        date(fromNow: true)
+        date(formatString: "DD MMMM, YYYY")
         image {
           sharp: childImageSharp {
             fixed(width: 700, height: 300) {
@@ -64,6 +65,9 @@ const AuthorPost = ({ author, contributors }) => {
 const PostTemplate = ({ data: { mdx: post } }) => {
   const { setCrumbPage } = React.useContext(StoreCtx)
   const { image, tags, title, author, date } = post.frontmatter
+  const dateToday = new Date()
+  const dateLate = new Date(date)
+  const isOldPost = (dateToday - dateLate) / (1000 * 3600 * 24 * 365);
 
   React.useEffect(() => {
     setCrumbPage(() => title)
@@ -76,17 +80,30 @@ const PostTemplate = ({ data: { mdx: post } }) => {
     <>
       {image ? (
         <Image
-          style={{ width: "100%", maxWidth: 700, borderRadius: 6, marginBottom: 16 }}
+          style={{
+            width: "100%",
+            maxWidth: 700,
+            borderRadius: 6,
+            marginBottom: 16,
+          }}
           objectFit="cover"
           objectPosition="50% 50%"
           fixed={image.sharp.fixed}
           alt={title}
         />
       ) : null}
-
+      {isOldPost > 1 ? (
+        <div style={{ marginBottom: 16 }}>
+          <Alert type="warning">
+            <p>
+              Artikel ini sudah {Math.floor(isOldPost)} tahun lamanya, kemungkinan beberapa topik
+              tidak relevan.
+            </p>
+          </Alert>
+        </div>
+      ) : null}
       <PostTitle>{title}</PostTitle>
       <AuthorPost author={author} contributors={post.fields.contributors} />
-      <p>{date}</p>
       <div>
         {tags.map((tag) => {
           const t = tag.replace(/-/gi, "")
