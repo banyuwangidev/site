@@ -7,6 +7,9 @@ const ListContainer = styled.div`
   article {
     margin-bottom: 56px;
   }
+  p {
+    margin-bottom: 16px;
+  }
 `
 
 const ArticleList = ({ posts }) => (

@@ -54,7 +54,7 @@ const Article = ({ post }) => {
           src={`https://avatars1.githubusercontent.com/${post.author}?size=32`}
           size="tiny"
         />
-        <p>
+        <span>
           <Link
             to={`/contributors/${github}`}
             username={name}
@@ -63,7 +63,7 @@ const Article = ({ post }) => {
             {`${name} `}
           </Link>
           on {post.date}
-        </p>
+        </span>
       </ArticleAuthor>
       <ArticleExcerpt>{post.excerpt}</ArticleExcerpt>
       <ArticlePointer>

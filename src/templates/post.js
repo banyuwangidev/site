@@ -57,7 +57,7 @@ const AuthorPost = ({ author, contributors }) => {
         {data.site}
       </Link>
       <Avatar size="small" src={avatar} label={data.github} />
-      <p>{data.bio}</p>
+      <div>{data.bio}</div>
     </div>
   )
 }
@@ -95,10 +95,10 @@ const PostTemplate = ({ data: { mdx: post } }) => {
       {isOldPost > 1 ? (
         <div style={{ marginBottom: 16 }}>
           <Alert type="warning">
-            <p>
+            
               Artikel ini sudah {Math.floor(isOldPost)} tahun lamanya, kemungkinan beberapa topik
               tidak relevan.
-            </p>
+            
           </Alert>
         </div>
       ) : null}
