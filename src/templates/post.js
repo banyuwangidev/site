@@ -1,20 +1,68 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Image from "gatsby-image"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Link from "../components/Link"
 import Avatar from "../components/Avatar"
 import Alert from "../components/Alert"
-
+import { colors } from '../shared/global'
 import { StoreCtx } from "../shared/context"
+
+const flexCenter = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+`
 
 const PostContent = styled.article``
 const PostTitle = styled.h1`
   text-align: center;
   font-size: 40px;
 `
+const PostProfile = styled.div`
+  margin: 32px 0 28px;
+  text-align: center;
+`
+const ProfileLink = styled.div`
+  padding-top: 6px;
+  max-width: 400px;
+  ${flexCenter};
+  a {
+    color: ${colors.primary};
+    margin: 0 6px;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+`
+
+const ProfileAuthor = styled.div`
+  span {
+    opacity: 0.8;
+    font-size: 14px;
+  }
+`
+
+const PostTag = styled.div`
+  max-width: 400px;
+  ${flexCenter};
+  a {
+    margin: 0 6px;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+`
+
 
 export const query = graphql`
   query($slug: String!) {
@@ -45,20 +93,38 @@ export const query = graphql`
   }
 `
 
-const AuthorPost = ({ author, contributors }) => {
+const AuthorPost = ({ data: { author, contributors, tags} }) => {
   const data = contributors.find((x) => x.github === author)
   const avatar = `https://avatars1.githubusercontent.com/${data.github}?size=42`
 
   return (
-    <div>
-      <h4>{data.name}</h4>
-      <Link to={`/contributors/${data.github}`}>{data.github}</Link>
-      <Link to={data.site} external>
-        {data.site}
-      </Link>
-      <Avatar size="small" src={avatar} label={data.github} />
-      <div>{data.bio}</div>
-    </div>
+    <PostProfile>
+      <ProfileAuthor>
+        <div style={{margin: "4px 6px 0 6px"}}>
+          <Avatar size="small" src={avatar} label={data.github} />
+        </div>
+        <Link to={`/contributors/${data.github}`} decoration="none">
+          <h4>{data.name}</h4>
+          <span>{data.bio}</span>
+        </Link>
+        
+      </ProfileAuthor>
+      <ProfileLink>
+        <Link to={data.site} external>
+          website
+        </Link>
+      </ProfileLink>
+      <PostTag>
+        {tags.map((tag) => {
+          const t = tag.replace(/-/gi, "")
+          return (
+            <React.Fragment key={t}>
+              <Link to={`/tags/${tag}`}>{`#${t}`}</Link>
+            </React.Fragment>
+          )
+        })}
+      </PostTag>
+    </PostProfile>
   )
 }
 
@@ -103,17 +169,7 @@ const PostTemplate = ({ data: { mdx: post } }) => {
         </div>
       ) : null}
       <PostTitle>{title}</PostTitle>
-      <AuthorPost author={author} contributors={post.fields.contributors} />
-      <div>
-        {tags.map((tag) => {
-          const t = tag.replace(/-/gi, "")
-          return (
-            <div key={t}>
-              <Link to={`/tags/${tag}`}>{`#${t}`}</Link>
-            </div>
-          )
-        })}
-      </div>
+      <AuthorPost data={{ author, contributors: post.fields.contributors, tags }} />
       <PostContent>
         <MDXRenderer>{post.body}</MDXRenderer>
       </PostContent>
