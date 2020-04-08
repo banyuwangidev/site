@@ -5,6 +5,8 @@ import { useScrollData } from "scroll-data-hook"
 
 import Logo from "../../assets/images/logo-32.png"
 import Link from "../Link"
+import HeaderMobileTree from './HeaderMobileTree'
+import HeaderBreadcrumb from './HeaderBreadcrumb'
 
 const Nav = styled.nav`
   box-sizing: border-box;
@@ -35,6 +37,7 @@ const Nav = styled.nav`
 const NavItemLeft = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
   line-height: 1.2;
   font-size: 14px;
   height: 100%;
@@ -83,23 +86,10 @@ const LinkHolder = styled.div`
     background: rgba(55, 53, 47, 0.08);
   }
 `
-const SeperateLine = styled.div`
-  color: #999;
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 32px;
-  margin: 0 2px;
-  vertical-align: middle;
-`
 
-const SpanText = styled.span`
-  line-height: 24px;
-  font-weight: 500;
-  text-decoration: none;
-  color: #111;
-  line-height: 32px;
-  padding: 0 6px;
+const FlexSeperate = styled.div`
+  flex-grow: 1;
+  flex-shrink: 1;
 `
 
 const TextOverflow = styled.div`
@@ -109,19 +99,34 @@ const TextOverflow = styled.div`
   max-width: ${(props) => props.size};
 `
 
-const FlexSeperate = styled.div`
-  flex-grow: 1;
-  flex-shrink: 1;
+const ButtonNavMobileLeft = styled.div`
+  display: none;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 12px 0;
+  border-radius: 6px;
+  @media (max-width: 768px) {
+    display: block;
+    visibility: visible;
+    cursor: pointer;
+    &:hover, &:focus {
+      background: rgba(55, 53, 47, 0.08);
+    }
+  }
 `
 
 const Header = ({ title, crumbs, menus }) => {
   const { position } = useScrollData()
-
-  const crumbsLen = crumbs.length === undefined ? 0 : crumbs.length
+  const [mobileNavLeft, setmobileNavLeft] = React.useState(false)
+  const [mobileNavRight, setmobileNavRight] = React.useState(false)
 
   return (
     <Nav scrolled={position.y > 100}>
       <NavItemLeft>
+        <ButtonNavMobileLeft onClick={() => setmobileNavLeft(true)}/>
+        { mobileNavLeft && <HeaderMobileTree action={setmobileNavLeft} />}
         <LinkHolder>
           <Link to="/" decoration="none">
             <img style={{ marginRight: 8 }} src={Logo} alt="logo" />
@@ -130,29 +135,7 @@ const Header = ({ title, crumbs, menus }) => {
             </TextOverflow>
           </Link>
         </LinkHolder>
-        {crumbsLen !== 0
-          ? crumbs.map((path, i) => {
-              return crumbsLen === i + 1 ? (
-                <React.Fragment key={path}>
-                  <SeperateLine>/</SeperateLine>
-                  <TextOverflow size="240px">
-                    <SpanText>{path}</SpanText>
-                  </TextOverflow>
-                </React.Fragment>
-              ) : (
-                <React.Fragment key={path}>
-                  <SeperateLine>/</SeperateLine>
-                  <LinkHolder>
-                    <Link to={`/${path}`} decoration="none">
-                      <TextOverflow size="160px">
-                        <span>{path}</span>
-                      </TextOverflow>
-                    </Link>
-                  </LinkHolder>
-                </React.Fragment>
-              )
-            })
-          : null}
+        <HeaderBreadcrumb crumbs={crumbs} TextOverflow={TextOverflow} LinkHolder={LinkHolder} />
       </NavItemLeft>
       <FlexSeperate />
       <NavItemRight>
