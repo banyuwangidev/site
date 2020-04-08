@@ -1,10 +1,50 @@
 import React from "react"
 import { graphql } from "gatsby"
+import styled, { css } from "styled-components"
 
 import Article from "../components/Article"
 import Link from "../components/Link"
+import { colors } from "../shared/global"
 import Avatar from "../components/Avatar"
 import { StoreCtx } from "../shared/context"
+
+const flexCenter = css`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+`
+const PostTitle = styled.h1`
+  text-align: center;
+  font-size: 2em;
+`
+
+const ProfileLink = styled.div`
+  padding-top: 6px;
+  a {
+    color: ${colors.primary};
+    margin: 0 6px;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+`
+
+const ProfileAuthor = styled.div`
+  ${flexCenter}
+
+  margin-bottom: 3em;
+
+  p {
+    text-align: center;
+    margin-bottom: 1em;
+    max-width: 32em;
+  }
+`
 
 export const query = graphql`
   query($contributor: String!) {
@@ -63,16 +103,19 @@ const ContributorTemplate = ({
 
   return (
     <div>
-      <h1>Contributor</h1>
-      <Avatar size="large" src={avatar} username={context.contributor} />
-      <h1>{contributor.name}</h1>
-      <p>{contributor.bio}</p>
-      <Link to={github} external>
-        {contributor.github}
-      </Link>
-      <Link to={contributor.site} external>
-        {contributor.site}
-      </Link>
+      <ProfileAuthor>
+        <Avatar size="large" src={avatar} username={context.contributor} />
+        <PostTitle>{contributor.name}</PostTitle>
+        <p>{contributor.bio}</p>
+        <ProfileLink>
+          <Link to={github} external>
+            {contributor.github}
+          </Link>
+          <Link to={contributor.site} external>
+            {contributor.site}
+          </Link>
+        </ProfileLink>
+      </ProfileAuthor>
       <div>
         {filteredPost.map(
           ({ frontmatter: post, excerpt, fields: { slug } }) => (
