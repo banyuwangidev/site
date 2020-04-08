@@ -1,8 +1,9 @@
-import React, { lazy, Suspense } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import Image from "gatsby-image"
 import styled, { css } from "styled-components"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import loadable from '@loadable/component'
 
 import Link from "../components/Link"
 import Avatar from "../components/Avatar"
@@ -123,7 +124,7 @@ const PostTemplate = ({ data: { mdx: post } }) => {
   const dateToday = new Date()
   const dateLate = new Date(date)
   const isOldPost = (dateToday - dateLate) / (1000 * 3600 * 24 * 365)
-  const Alert = lazy(() => import("../components/Alert"))
+  const Alert = loadable(() => import('../components/Alert'))
 
   React.useEffect(() => {
     setCrumbPage(() => title)
@@ -149,14 +150,12 @@ const PostTemplate = ({ data: { mdx: post } }) => {
         />
       ) : null}
       {isOldPost > 1 ? (
-        <Suspense fallback={<div>Loading...</div>}>
           <div style={{ marginBottom: 16 }}>
             <Alert type="warning">
               Artikel ini sudah {Math.floor(isOldPost)} tahun lamanya,
               kemungkinan beberapa topik tidak relevan.
             </Alert>
           </div>
-        </Suspense>
       ) : null}
       <PostTitle>{title}</PostTitle>
       <AuthorPost

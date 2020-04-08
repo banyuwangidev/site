@@ -1,23 +1,11 @@
 import * as React from "react"
-import { configure, addDecorator, addParameters } from "@storybook/react"
+import { configure, addDecorator } from "@storybook/react"
 import { withInfo } from "@storybook/addon-info"
 import { action } from "@storybook/addon-actions"
 import { withA11y } from "@storybook/addon-a11y"
-import { DocsPage } from "@storybook/addon-docs/blocks"
 
 import { loadFontForStorybook } from "../src/utils/loadFontForStorybook"
 import { GlobalStyle } from "../src/shared/global"
-
-addParameters({
-  options: {
-    showRoots: true,
-  },
-  docs: { page: DocsPage },
-  dependencies: {
-    withStoriesOnly: true,
-    hideEmpty: true,
-  },
-})
 
 // global style
 addDecorator(withA11y)
