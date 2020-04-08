@@ -7,7 +7,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import Link from "../components/Link"
 import Avatar from "../components/Avatar"
 import Alert from "../components/Alert"
-import { colors } from '../shared/global'
+import { colors } from "../shared/global"
 import { StoreCtx } from "../shared/context"
 
 const flexCenter = css`
@@ -32,12 +32,8 @@ const ProfileLink = styled.div`
   ${flexCenter};
   a {
     color: ${colors.primary};
-    margin: 0 6px;
-    &:first-child {
-      margin-left: 0;
-    }
-    &:last-child {
-      margin-right: 0;
+    &:not(:last-child) {
+      margin-right: 0.75em;
     }
   }
 `
@@ -53,16 +49,11 @@ const PostTag = styled.div`
   max-width: 400px;
   ${flexCenter};
   a {
-    margin: 0 6px;
-    &:first-child {
-      margin-left: 0;
-    }
-    &:last-child {
-      margin-right: 0;
+    &:not(:last-child) {
+      margin-right: 0.75em;
     }
   }
 `
-
 
 export const query = graphql`
   query($slug: String!) {
@@ -93,21 +84,20 @@ export const query = graphql`
   }
 `
 
-const AuthorPost = ({ data: { author, contributors, tags} }) => {
+const AuthorPost = ({ data: { author, contributors, tags } }) => {
   const data = contributors.find((x) => x.github === author)
   const avatar = `https://avatars1.githubusercontent.com/${data.github}?size=42`
 
   return (
     <PostProfile>
       <ProfileAuthor>
-        <div style={{margin: "4px 6px 0 6px"}}>
+        <div style={{ margin: "4px 6px 0 6px" }}>
           <Avatar size="small" src={avatar} label={data.github} />
         </div>
         <Link to={`/contributors/${data.github}`} decoration="none">
           <h4>{data.name}</h4>
           <span>{data.bio}</span>
         </Link>
-        
       </ProfileAuthor>
       <ProfileLink>
         <Link to={data.site} external>
@@ -133,7 +123,7 @@ const PostTemplate = ({ data: { mdx: post } }) => {
   const { image, tags, title, author, date } = post.frontmatter
   const dateToday = new Date()
   const dateLate = new Date(date)
-  const isOldPost = (dateToday - dateLate) / (1000 * 3600 * 24 * 365);
+  const isOldPost = (dateToday - dateLate) / (1000 * 3600 * 24 * 365)
 
   React.useEffect(() => {
     setCrumbPage(() => title)
@@ -161,15 +151,15 @@ const PostTemplate = ({ data: { mdx: post } }) => {
       {isOldPost > 1 ? (
         <div style={{ marginBottom: 16 }}>
           <Alert type="warning">
-            
-              Artikel ini sudah {Math.floor(isOldPost)} tahun lamanya, kemungkinan beberapa topik
-              tidak relevan.
-            
+            Artikel ini sudah {Math.floor(isOldPost)} tahun lamanya, kemungkinan
+            beberapa topik tidak relevan.
           </Alert>
         </div>
       ) : null}
       <PostTitle>{title}</PostTitle>
-      <AuthorPost data={{ author, contributors: post.fields.contributors, tags }} />
+      <AuthorPost
+        data={{ author, contributors: post.fields.contributors, tags }}
+      />
       <PostContent>
         <MDXRenderer>{post.body}</MDXRenderer>
       </PostContent>
