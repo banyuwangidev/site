@@ -3,8 +3,8 @@ import { graphql } from "gatsby"
 import Image from "gatsby-image"
 import styled, { css } from "styled-components"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import loadable from '@loadable/component'
 
+import Alert from "../components/Alert"
 import Link from "../components/Link"
 import Avatar from "../components/Avatar"
 import { colors } from "../shared/global"
@@ -124,7 +124,6 @@ const PostTemplate = ({ data: { mdx: post } }) => {
   const dateToday = new Date()
   const dateLate = new Date(date)
   const isOldPost = (dateToday - dateLate) / (1000 * 3600 * 24 * 365)
-  const Alert = loadable(() => import('../components/Alert'))
 
   React.useEffect(() => {
     setCrumbPage(() => title)
