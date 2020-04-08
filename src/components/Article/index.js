@@ -8,7 +8,7 @@ import Link from "../Link"
 const ArticlePost = styled.article`
   h1 {
     font-size: 40px;
-    margin-top: 8px 0 16px 0;
+    margin: 8px 0 16px 0;
     line-height: 48px;
   }
 `
