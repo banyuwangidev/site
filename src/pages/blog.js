@@ -1,9 +1,8 @@
 import * as React from "react"
-import loadable from '@loadable/component'
-import SEO from "../components/seo"
-import usePosts from "../utils/usePosts"
 
-const ArticleList = loadable(() => import('../components/ArticleList'))
+import SEO from "../components/seo"
+import ArticleList from "../components/ArticleList"
+import usePosts from "../utils/usePosts"
 
 const Blog = () => {
   const posts = usePosts()
