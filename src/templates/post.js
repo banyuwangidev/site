@@ -1,4 +1,4 @@
-import React, { Lazy, Suspense } from "react"
+import React, { lazy, Suspense } from "react"
 import { graphql } from "gatsby"
 import Image from "gatsby-image"
 import styled, { css } from "styled-components"
@@ -6,7 +6,6 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Link from "../components/Link"
 import Avatar from "../components/Avatar"
-
 import { colors } from "../shared/global"
 import { StoreCtx } from "../shared/context"
 
@@ -32,12 +31,8 @@ const ProfileLink = styled.div`
   ${flexCenter};
   a {
     color: ${colors.primary};
-    margin: 0 6px;
-    &:first-child {
-      margin-left: 0;
-    }
-    &:last-child {
-      margin-right: 0;
+    &:not(:last-child) {
+      margin-right: 0.75em;
     }
   }
 `
@@ -53,12 +48,8 @@ const PostTag = styled.div`
   max-width: 400px;
   ${flexCenter};
   a {
-    margin: 0 6px;
-    &:first-child {
-      margin-left: 0;
-    }
-    &:last-child {
-      margin-right: 0;
+    &:not(:last-child) {
+      margin-right: 0.75em;
     }
   }
 `
@@ -132,7 +123,7 @@ const PostTemplate = ({ data: { mdx: post } }) => {
   const dateToday = new Date()
   const dateLate = new Date(date)
   const isOldPost = (dateToday - dateLate) / (1000 * 3600 * 24 * 365)
-  const Alert = React.lazy(() => import("../components/Alert"))
+  const Alert = lazy(() => import("../components/Alert"))
 
   React.useEffect(() => {
     setCrumbPage(() => title)

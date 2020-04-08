@@ -24,12 +24,8 @@ const ProfileLink = styled.div`
   padding-top: 6px;
   a {
     color: ${colors.primary};
-    margin: 0 6px;
-    &:first-child {
-      margin-left: 0;
-    }
-    &:last-child {
-      margin-right: 0;
+    &:not(:last-child) {
+      margin-right: 0.75em;
     }
   }
 `
@@ -109,7 +105,7 @@ const ContributorTemplate = ({
         <p>{contributor.bio}</p>
         <ProfileLink>
           <Link to={github} external>
-            {contributor.github}
+            {`@${contributor.github}`}
           </Link>
           <Link to={contributor.site} external>
             {contributor.site}
