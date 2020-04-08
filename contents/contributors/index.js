@@ -15,7 +15,7 @@ const contributorList = [
     name: "Mahendrata Harpi",
     github: "piharpi",
     site: "harpi.rocks",
-    bio: "kadang senang, dan kadang juga sedih",
+    bio: "Junior programmer working for myself, maintainer @banyuwangidev",
   },
 ]
 module.exports = contributorList
