@@ -1395,7 +1395,7 @@
     "@babel/runtime" "^7.7.2"
     core-js "^3.4.1"
 
-"@loadable/component@^5.12.0":
+"@loadable/component@5.12.0":
   version "5.12.0"
   resolved "https://registry.yarnpkg.com/@loadable/component/-/component-5.12.0.tgz#34d056d15f53dc08d04e9203cad6867cf4f7306c"
   integrity sha512-eDG7FPZ8tCFA/mqu2IrYV6eS+UxGBo21PwtEV9QpkpYrx25xKRXzJUm36yfQPK3o7jXu43xpPkwiU4mLWcjJlw==
@@ -7184,7 +7184,7 @@ gatsby-plugin-page-creator@^2.2.1:
     lodash "^4.17.15"
     micromatch "^3.1.10"
 
-gatsby-plugin-preact@^3.2.1:
+gatsby-plugin-preact@3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-preact/-/gatsby-plugin-preact-3.2.1.tgz#57fc56c550f6e419eeb30903f649e743fc1f2226"
   integrity sha512-nvwylBpchiqp83bYWR1b8+Syl4ySUdsvwA2sTm7lo+s8FfOPiu4nJ2U8i+S4vTMX7EmqsP2rRQjIw5+sMuL54g==
@@ -12093,7 +12093,7 @@ potrace@^2.1.5:
   dependencies:
     jimp "^0.9.6"
 
-preact@^10.3.4:
+preact@10.3.4:
   version "10.3.4"
   resolved "https://registry.yarnpkg.com/preact/-/preact-10.3.4.tgz#e1542a4d3eba3e7a37f312a2c331231b97052024"
   integrity sha512-wMgzs/RGYf0I1PZf8ZFJdyU/3kCcwepJyVYe+N9FGajyQWarMoPrPfrQajcG0psPj6ySYv2cSuLYFCihvV/Qrw==
