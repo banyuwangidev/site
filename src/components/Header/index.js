@@ -126,7 +126,7 @@ const Header = ({ title, crumbs, menus }) => {
     <Nav scrolled={position.y > 100}>
       <NavItemLeft>
         <ButtonNavMobileLeft onClick={() => setmobileNavLeft(true)}/>
-        { mobileNavLeft && <HeaderMobileTree action={setmobileNavLeft} />}
+        { (mobileNavLeft && crumbs.length >= 1) && <HeaderMobileTree crumbs={crumbs} action={setmobileNavLeft} />}
         <LinkHolder>
           <Link to="/" decoration="none">
             <img style={{ marginRight: 8 }} src={Logo} alt="logo" />
