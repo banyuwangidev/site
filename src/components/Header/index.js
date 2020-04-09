@@ -5,8 +5,8 @@ import { useScrollData } from "scroll-data-hook"
 
 import Logo from "../../assets/images/logo-32.png"
 import Link from "../Link"
-import HeaderMobileTree from './HeaderMobileTree'
-import HeaderBreadcrumb from './HeaderBreadcrumb'
+import HeaderMobileTree from "./HeaderMobileTree"
+import HeaderBreadcrumb from "./HeaderBreadcrumb"
 
 const Nav = styled.nav`
   box-sizing: border-box;
@@ -111,7 +111,8 @@ const ButtonNavMobileLeft = styled.div`
     display: block;
     visibility: visible;
     cursor: pointer;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background: rgba(55, 53, 47, 0.08);
     }
   }
@@ -125,8 +126,10 @@ const Header = ({ title, crumbs, menus }) => {
   return (
     <Nav scrolled={position.y > 100}>
       <NavItemLeft>
-        <ButtonNavMobileLeft onClick={() => setmobileNavLeft(true)}/>
-        { (mobileNavLeft && crumbs.length >= 1) && <HeaderMobileTree crumbs={crumbs} action={setmobileNavLeft} />}
+        <ButtonNavMobileLeft onClick={() => setmobileNavLeft(true)} />
+        {mobileNavLeft && crumbs.length >= 1 && (
+          <HeaderMobileTree crumbs={crumbs} action={setmobileNavLeft} />
+        )}
         <LinkHolder>
           <Link to="/" decoration="none">
             <img style={{ marginRight: 8 }} src={Logo} alt="logo" />
@@ -135,7 +138,11 @@ const Header = ({ title, crumbs, menus }) => {
             </TextOverflow>
           </Link>
         </LinkHolder>
-        <HeaderBreadcrumb crumbs={crumbs} TextOverflow={TextOverflow} LinkHolder={LinkHolder} />
+        <HeaderBreadcrumb
+          crumbs={crumbs}
+          TextOverflow={TextOverflow}
+          LinkHolder={LinkHolder}
+        />
       </NavItemLeft>
       <FlexSeperate />
       <NavItemRight>

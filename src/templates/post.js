@@ -149,12 +149,12 @@ const PostTemplate = ({ data: { mdx: post } }) => {
         />
       ) : null}
       {isOldPost > 1 ? (
-          <div style={{ marginBottom: 16 }}>
-            <Alert type="warning">
-              Artikel ini sudah {Math.floor(isOldPost)} tahun lamanya,
-              kemungkinan beberapa topik tidak relevan.
-            </Alert>
-          </div>
+        <div style={{ marginBottom: 16 }}>
+          <Alert type="warning">
+            Artikel ini sudah {Math.floor(isOldPost)} tahun lamanya, kemungkinan
+            beberapa topik tidak relevan.
+          </Alert>
+        </div>
       ) : null}
       <PostTitle>{title}</PostTitle>
       <AuthorPost

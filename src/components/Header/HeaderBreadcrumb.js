@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import Link from '../Link'
+import Link from "../Link"
 
 const SeperateLine = styled.div`
   color: #999;
@@ -23,32 +23,33 @@ const SpanText = styled.span`
 `
 
 const HeaderBreadcrumb = ({ crumbs, TextOverflow, LinkHolder }) => {
-    const crumbsLen = crumbs.length === undefined ? 0 : crumbs.length
-    return (
-        <React.Fragment>
-            {crumbsLen !== 0 && crumbs.map((path, i) => {
-              return crumbsLen === i + 1 ? (
-                <React.Fragment key={path}>
-                  <SeperateLine>/</SeperateLine>
-                  <TextOverflow size="240px">
-                    <SpanText>{path}</SpanText>
+  const crumbsLen = crumbs.length === undefined ? 0 : crumbs.length
+  return (
+    <React.Fragment>
+      {crumbsLen !== 0 &&
+        crumbs.map((path, i) => {
+          return crumbsLen === i + 1 ? (
+            <React.Fragment key={path}>
+              <SeperateLine>/</SeperateLine>
+              <TextOverflow size="240px">
+                <SpanText>{path}</SpanText>
+              </TextOverflow>
+            </React.Fragment>
+          ) : (
+            <React.Fragment key={path}>
+              <SeperateLine>/</SeperateLine>
+              <LinkHolder>
+                <Link to={`/${path}`} decoration="none">
+                  <TextOverflow size="160px">
+                    <span>{path}</span>
                   </TextOverflow>
-                </React.Fragment>
-              ) : (
-                <React.Fragment key={path}>
-                  <SeperateLine>/</SeperateLine>
-                  <LinkHolder>
-                    <Link to={`/${path}`} decoration="none">
-                      <TextOverflow size="160px">
-                        <span>{path}</span>
-                      </TextOverflow>
-                    </Link>
-                  </LinkHolder>
-                </React.Fragment>
-              )
-            })}
-        </React.Fragment>
-    )
+                </Link>
+              </LinkHolder>
+            </React.Fragment>
+          )
+        })}
+    </React.Fragment>
+  )
 }
 
 export default HeaderBreadcrumb
