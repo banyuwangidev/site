@@ -59,7 +59,10 @@ const NavItemRight = styled.div`
   line-height: 1.2;
   min-width: 0px;
   padding: 4px 0;
-
+  @media (max-width: 768px) {
+    display: none;
+    visibility: hidden;
+  }
   div {
     margin-left: 8px;
   }
