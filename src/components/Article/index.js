@@ -5,14 +5,22 @@ import Avatar from "../Avatar"
 import Link from "../Link"
 
 // NEED TO CREATE SIZE OF TYPOGRAPH
-const ArticlePost = styled.article`
+const ArticlePost = styled.article``
+const ArticleTitle = styled.div`
   h1 {
     font-size: 40px;
     margin: 8px 0 16px 0;
     line-height: 48px;
+    display: inline;
+    &:hover {
+      background-color: #010101;
+      color: white;
+    }
+  }
+  a {
+    text-decoration: none !important;
   }
 `
-
 const ArticleAuthor = styled.div`
   display: flex;
   align-items: center;
@@ -33,9 +41,11 @@ const ArticlePointer = styled.div`
     position: relative;
     left: 0;
   }
-
-  a:hover > span {
-    left: 6px;
+  a {
+    text-decoration: none !important;
+    &:hover > span {
+      left: 6px;
+    }
   }
 `
 
@@ -46,9 +56,11 @@ const Article = ({ post }) => {
 
   return (
     <ArticlePost>
-      <Link to={`/blog/${post.slug}`} username={post.title} decoration="none">
-        <h1>{post.title}</h1>
-      </Link>
+      <ArticleTitle>
+        <Link to={`/blog/${post.slug}`} username={post.title} decoration="none">
+          <h1>{post.title}</h1>
+        </Link>
+      </ArticleTitle>
       <ArticleAuthor>
         <Avatar
           src={`https://avatars1.githubusercontent.com/${post.author}?size=32`}

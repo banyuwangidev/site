@@ -21,7 +21,9 @@ const Nav = styled.nav`
   right: 0;
   top: 0;
   z-index: 1;
-
+  a {
+    text-decoration: none !important;
+  }
   ${(props) =>
     props.scrolled &&
     css`

@@ -1,10 +1,13 @@
 import React from "react"
+import Link from "../components/Link"
 
 const Footer = () => (
   <footer>
     &copy; {new Date().getFullYear()}, Built with
     {` `}
-    <a href="https://www.banyuwangidev.org">Banyuwangi Dev</a>
+    <Link to="www.banyuwangidev.org" external>
+      Banyuwangi Dev
+    </Link>
   </footer>
 )
 

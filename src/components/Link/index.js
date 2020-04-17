@@ -8,6 +8,11 @@ const LinkStyle = styled((props) => <Link {...props} />)`
   font-weight: 500;
   text-decoration: ${(props) => props.decoration};
   color: #111;
+
+  &:hover {
+    text-decoration: ${(props) =>
+      props.decoration === "none" ? "underline" : "none"};
+  }
 `
 
 const LinkExternal = styled.a`
