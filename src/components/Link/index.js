@@ -15,6 +15,7 @@ const LinkExternal = styled.a`
   font-weight: 500;
   text-decoration: ${(props) => props.decoration};
   color: #111;
+  cursor: ne-resize;
 `
 
 LinkStyle.defaultProps = {

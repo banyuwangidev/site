@@ -25,7 +25,7 @@ const Nav = styled.nav`
   ${(props) =>
     props.scrolled &&
     css`
-      border-bottom: 1px solid #dadada6b;
+      border-bottom: 1px solid #e0e0e0;
       background-color: white;
     `}
 
