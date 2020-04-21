@@ -6,7 +6,8 @@ import { colors } from "../../shared/global"
 
 const NoteContainer = styled.div`
     padding: 8px 16px;
-    background-color: ${colors.primaryLight};
+    background-color: white;
+    border: 1px solid rgb(234, 234, 234);
     color: black;
     font-size: 14px;
     border-radius: 6px;
@@ -17,6 +18,14 @@ const NoteContainer = styled.div`
       user-select: none;
       padding-right: 2pt;
     }
+    
+    ${(props) => props.small && css`
+      padding: 4px 8px;
+    `}
+
+    ${(props) => props.type && css`
+      border: none;
+    `}
 
     ${(props) =>
       props.type === "primary" &&
@@ -24,6 +33,10 @@ const NoteContainer = styled.div`
         color: ${colors.primary};
         background-color: ${colors.primaryLight};
       `}
+
+    ${(props) => props.type === "secondary" && css`
+      color: #666;
+    `}
 
     ${(props) =>
       props.type === "success" &&
@@ -47,15 +60,15 @@ const NoteContainer = styled.div`
       `}
 `
 
-const Note = ({ type, children }) => (
-  <NoteContainer type={type}>
-    <span>NOTE: </span>
-    {children}
+const Note = (props) => (
+  <NoteContainer type={props.type} {...props}>
+    {!props.noLabel && <span>{props.label ? props.label : "NOTE"}: </span>}
+    {props.children}
   </NoteContainer>
 )
 
 export default Note
 
 Note.propTypes = {
-  type: propTypes.string.isRequired,
+  type: propTypes.string,
 }
