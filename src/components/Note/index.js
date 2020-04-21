@@ -4,11 +4,19 @@ import styled, { css } from "styled-components"
 
 import { colors } from "../../shared/global"
 
-const AlertContainer = styled.div`
+const NoteContainer = styled.div`
     padding: 8px 16px;
     background-color: ${colors.primaryLight};
     color: black;
+    font-size: 14px;
     border-radius: 6px;
+
+    span {
+      font-weight: 600;
+      text-transform: uppercase;
+      user-select: none;
+      padding-right: 2pt;
+    }
 
     ${(props) =>
       props.type === "primary" &&
@@ -39,12 +47,15 @@ const AlertContainer = styled.div`
       `}
 `
 
-const Alert = ({ type, children }) => (
-  <AlertContainer type={type}>{children}</AlertContainer>
+const Note = ({ type, children }) => (
+  <NoteContainer type={type}>
+    <span>NOTE: </span>
+    {children}
+  </NoteContainer>
 )
 
-export default Alert
+export default Note
 
-Alert.propTypes = {
+Note.propTypes = {
   type: propTypes.string.isRequired,
 }

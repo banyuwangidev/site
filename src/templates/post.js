@@ -4,7 +4,7 @@ import Image from "gatsby-image"
 import styled, { css } from "styled-components"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-import Alert from "../components/Alert"
+import Note from "../components/Note"
 import Link from "../components/Link"
 import Avatar from "../components/Avatar"
 import { colors } from "../shared/global"
@@ -150,10 +150,10 @@ const PostTemplate = ({ data: { mdx: post } }) => {
       ) : null}
       {isOldPost > 1 ? (
         <div style={{ marginBottom: 16 }}>
-          <Alert type="warning">
+          <Note type="warning">
             Artikel ini sudah {Math.floor(isOldPost)} tahun lamanya, kemungkinan
             beberapa topik tidak relevan.
-          </Alert>
+          </Note>
         </div>
       ) : null}
       <PostTitle>{title}</PostTitle>
